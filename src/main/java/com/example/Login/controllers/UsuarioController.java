@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
-
 
 @Controller
 @CrossOrigin(origins = "*")
@@ -22,22 +20,11 @@ public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServic
     UsuarioRepository usuarioRepository;
 
 
-    @GetMapping("/formulario")
+    @GetMapping("/UsuarioController")
     public String formularioProducto(ModelMap modelo){
 
         try{
             return "bien";
-        }catch(Exception e){
-            modelo.addAttribute("error", e.getMessage());
-            return "error";
-        }
-    }
-    @PostMapping(value = "/login")
-    public String logearUsuario(ModelMap modelo, HttpSession http){
-        Usuario logueado = (Usuario) http.getAttribute("usuariosession");
-        try{
-            modelo.put("usuario", logueado);
-            return "hecho";
         }catch(Exception e){
             modelo.addAttribute("error", e.getMessage());
             return "error";
