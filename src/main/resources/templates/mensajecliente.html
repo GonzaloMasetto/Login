@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body style="background-color: green">
+
+<table style="max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;">
+        <tr>
+        <td style="background-color: #ecf0f1">
+            <div style="color: #34495e; margin: 4% 10% 2%; text-align: justify;font-family: sans-serif">
+                <h2 style="color: #e67e22; margin: 0 0 7px">Hola <span th:text="${nombre}" style="font-weight: bold;"></span></h2>
+                <div th:switch="${grupo}">
+                    <p style="margin: 2px; font-size: 15px" th:case="${true}">Bienvenida/o a la comunidad Liberium, en breve te mandaremos el link para que vos y tu equipo instalen instales en su celulares la app y usen el sistema desde sus computadoras y demás dispositivos.</p>
+                    <p style="margin: 2px; font-size: 15px" th:case="*">Bienvenida/o a la comunidad Liberium, en breve te mandaremos el link para que instales en tu celular la app y uses el sistema desde tus computadoras y demás dispositivos.</p>
+                </div>
+                <div style="width: 100%;margin:20px 0; display: inline-block;text-align: center">
+                    <p>icono de Liberium</p>
+                </div>
+                <div style="width: 100%; text-align: center">
+                    <a style="text-decoration: none; border-radius: 5px; padding: 11px 23px; color: white; background-color: #3498db" href="https://liberium.com.ar">Ir a la página</a>
+                </div>
+                <p style="color: #b3b3b3; font-size: 12px; text-align: center;margin: 30px 0 0">Liberium</p>
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+</body>
+</html>

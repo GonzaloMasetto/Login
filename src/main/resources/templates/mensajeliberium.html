@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Title</title>
+</head>
+<body style="background-color: white">
+<table style="border-collapse:collapse;">
+  <thead>
+  <tr>
+    <th colspan="2" style="color:red" >Hay un nuevo usuario de Liberium</th>
+  </tr>
+  <tr style="border-bottom:1px solid black;">
+    <th style="padding:5px" ><em>ID</em></th>
+    <th style="padding:5px;border-left:1px solid black;"><em>USUARIO</em></th>
+    <th style="padding:5px;border-left:1px solid black;"><em>GMAIL</em></th>
+    <th style="padding:5px;border-left:1px solid black;" ><em>JEFE EQUIPO</em></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="usuario : ${usuarios}">
+    <td th:text="${usuario.id}" style="padding:5px;"></td>
+    <td th:text="${usuario.usuario}" style="padding:5px;border-left:1px solid black;"></td>
+    <td th:text="${usuario.mail}" style="padding:5px;border-left:1px solid black;"></td>
+    <td th:text="${usuario.jefeEquipo}" style="padding:5px;border-left:1px solid black;"></td>
+
+  </tr>
+
+  </tbody>
+</table>
+</body>
+</html>

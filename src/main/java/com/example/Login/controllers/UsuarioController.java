@@ -1,13 +1,18 @@
 package com.example.Login.controllers;
 
+import com.example.Login.entities.Grupo;
 import com.example.Login.entities.Usuario;
-import com.example.Login.repositories.UsuarioRepository;
 import com.example.Login.services.UsuarioService;
 import com.example.Login.services.UsuarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
+
 
 
 @Controller
@@ -16,23 +21,23 @@ public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServic
 
     @Autowired
     UsuarioService svcUsuario;
+    String provincia;
 
-    UsuarioRepository usuarioRepository;
 
-
-    @GetMapping("/UsuarioController")
-    public String formularioProducto(ModelMap modelo){
-
-        try{
-            return "bien";
-        }catch(Exception e){
-            modelo.addAttribute("error", e.getMessage());
+    @GetMapping("/perfil")
+    public String perfil(Model model) {
+        try {
+            model.addAttribute("usuarios", svcUsuario.listarUsuarios());
+            return "perfil";
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
             return "error";
         }
     }
 
     @PostMapping(value = "/registro")
-    public String registro(@RequestParam String nombre, @RequestParam String usuario, @RequestParam String mail, @RequestParam String contrasena,
+    public String registro(@RequestParam String usuario, @RequestParam String mail, @RequestParam String contrasena, @RequestParam String pais,
+                           String provinciaAR, String provinciaCH, String provinciaOTRO,
                            @RequestParam String usuariodos, @RequestParam String maildos,
                            @RequestParam String usuariotres, @RequestParam String mailtres,
                            @RequestParam String usuariocuatro, @RequestParam String mailcuatro,
@@ -41,62 +46,76 @@ public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServic
                            @RequestParam String usuariosiete, @RequestParam String mailsiete,
                            @RequestParam String usuarioocho, @RequestParam String mailocho,
                            @RequestParam String usuarionueve, @RequestParam String mailnueve,
-                           ModelMap modelo){
+                           ModelMap modelo, Pageable pageable){
+
         try {
+            Grupo grupo = new Grupo();
 
+            if (pais.equals("AR")){
+                this.provincia = provinciaAR;
+            } else if (pais.equals("CL")) {
+                this.provincia = provinciaCH;
+            }else {
+                this.provincia = provinciaOTRO;
+            }
 
+            svcUsuario.registrar(usuario, mail, contrasena,true, grupo, pais, provincia);
             if (!(usuariodos.equals(""))){
 
-                svcUsuario.registrar(nombre, usuariodos, maildos, contrasena);
-                svcUsuario.enviarMail(maildos);
+                svcUsuario.registrar(usuariodos, maildos, contrasena, false, grupo, pais, provincia);
                 modelo.put("exito", "Registrado correctamente");
             }
             if (!(usuariotres.equals("")))
             {
-                svcUsuario.registrar(nombre, usuariotres, mailtres, contrasena);
-                svcUsuario.enviarMail(mailtres);
+                svcUsuario.registrar(usuariotres, mailtres, contrasena,false, grupo, pais, provincia);
+
                 modelo.put("exito", "Registrado correctamente");
             }
             if (!(usuariocuatro.equals("")))
             {
-                svcUsuario.registrar(nombre, usuariocuatro, mailcuatro, contrasena);
-                svcUsuario.enviarMail(mailcuatro);
+                svcUsuario.registrar(usuariocuatro, mailcuatro, contrasena, false, grupo, pais, provincia);
+
                 modelo.put("exito", "Registrado correctamente");
             }
             if (!(usuariocinco.equals("")))
             {
-                svcUsuario.registrar(nombre, usuariocinco, mailcinco, contrasena);
-                svcUsuario.enviarMail(mailcinco);
+                svcUsuario.registrar(usuariocinco, mailcinco, contrasena,false, grupo, pais, provincia);
+
                 modelo.put("exito", "Registrado correctamente");
             }
             if (!(usuarioseis.equals("")))
             {
-                svcUsuario.registrar(nombre, usuarioseis, mailseis, contrasena);
-                svcUsuario.enviarMail(mailseis);
+                svcUsuario.registrar(usuarioseis, mailseis, contrasena,false, grupo, pais, provincia);
+
                 modelo.put("exito", "Registrado correctamente");
             }
             if (!(usuariosiete.equals("")))
             {
-                svcUsuario.registrar(nombre, usuariosiete, mailsiete, contrasena);
-                svcUsuario.enviarMail(mailsiete);
+                svcUsuario.registrar(usuariosiete, mailsiete, contrasena,false, grupo, pais, provincia);
+
                 modelo.put("exito", "Registrado correctamente");
             }
             if (!(usuarioocho.equals("")))
             {
-                svcUsuario.registrar(nombre, usuarioocho, mailocho, contrasena);
-                svcUsuario.enviarMail(mailocho);
+                svcUsuario.registrar(usuarioocho, mailocho, contrasena,false, grupo, pais, provincia);
+
                 modelo.put("exito", "Registrado correctamente");
             }
             if (!(usuariosiete.equals("")))
             {
-                svcUsuario.registrar(nombre, usuarionueve, mailnueve, contrasena);
-                svcUsuario.enviarMail(mailnueve);
+                svcUsuario.registrar(usuarionueve, mailnueve, contrasena,false, grupo, pais, provincia);
+
                 modelo.put("exito", "Registrado correctamente");
             }
-            svcUsuario.registrar(nombre, usuario, mail, contrasena);
-            svcUsuario.enviarMail(mail);
+           // if (usuariodos.equals("")){
+            //    svcUsuario.mensajeCliente(usuario,false);
+
+           // }else{
+           //     svcUsuario.mensajeCliente(usuario,true);
+           // }
+            svcUsuario.mensajeLiberium(grupo,pageable);
             modelo.put("exito", "Registrado correctamente");
-            return  "hecho";
+            return  "inicio";
 
         }catch(Exception e){
             modelo.put("error", e.getMessage());

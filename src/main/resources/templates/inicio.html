@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"><head>
+    <meta charset="UTF-8">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{css/Layout.css}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="icon" href="data:,">
+
+</head>
+<body>
+<nav th:fragment="nav_bar" class="navbar navbar-expand-lg navbar-light bg-orange" style="background-color: red">
+    <div class="container-fluid mt-2 mb-2">
+        <a class="navbar-brand text-light" th:href="@{/inicio}" style="font-family: serif; font-style:oblique 5deg;">Login</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll position-absolute end-0" style="--bs-scroll-height: 100px;">
+                <li class="nav-item dropdown">
+                    <a class="text-light nav-link dropdown-toggle" sec:authorize="hasAnyRole('ADMIN', 'CLIENTE')" th:href="@{/perfil}" style="margin-right: 10px" data-bs-toggle="dropdown"><i class="bi bi-person" style="font-size: 2.75rem;"></i><span class="sr-only"></span></a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" sec:authorize="hasRole('ADMIN')" th:href="@{/perfil}">Ir a perfil</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" sec:authorize="hasAnyRole('ADMIN', 'CLIENTE')" th:href="@{/logout}">Cerrar sesión</a></li>
+                    </ul>
+                </li>
+
+                <button class="btn btn-light d-grid gap-2 d-md-block" style="height: 35px; width: 90px; margin-right: 15px; margin-top: 20px;" type="button" data-bs-toggle="modal" data-bs-target="#login" th:if="${session.usuariosession == null}">Login</button>
+
+                <button class="btn btn-light d-grid gap-2 d-md-block" style="height: 35px; width: 90px; margin-right: 15px; margin-top: 20px;" type="button" data-bs-toggle="modal" data-bs-target="#signup" th:if="${session.usuariosession == null}">Sign Up</button>
+
+
+
+            </ul>
+        </div>
+    </div>
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Iniciar Sesión</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="" th:action="@{/logincheck}" method="post">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="nombre@example.com" name="mail">
+                            <label for="floatingInput">Mail</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="contraseña" name="contrasena">
+                            <label for="floatingPassword">Contraseña</label>
+                        </div>
+                        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Log in</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="signup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabe">Registro</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form th:action="@{/registro}" method="post" class="needs-validation" id="formularioRegistro" novalidate>
+                        <div class="text-center mb-3">
+                            <p>Liberium</p>
+                        </div>
+                        <!-- Username input -->
+                        <div class="form-outline mb-4">
+                            <input type="text" class="form-control" name="usuario" id="usuario" placeholder="usuario" required/>
+                            <label class="form-label" for="usuario">Usuario</label>
+                            <div class="invalid-feedback">
+                                Porfavor ingrese el usuario
+                            </div>
+                        </div>
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            <div class="input-group">
+                                <input type="text" id="mail1" class="form-control" name="mail" placeholder="Gmail" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+                                <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                            </div>
+                            <label class="form-label" for="mail">Gmail</label>
+                            <div class="invalid-feedback">
+                                Porfavor ingrese el Gmail
+                            </div>
+                            <br>
+                            <p id="aparecerErrorGmail1" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-4" id="grupo__password">
+                            <input type="password" id="contrasena"  class="form-control" name="contrasena" placeholder="contraseña" required/>
+                            <label class="form-label" for="contrasena">Contraseña</label>
+                            <div class="invalid-feedback">
+                                Porfavor ingrese la contraseña
+                            </div>
+                        </div>
+                        <!-- Password input -->
+                        <div class="form-outline mb-4"  id="grupo__password2">
+                            <input type="password" id="contrasena2"  class="form-control" name="contrasena2" placeholder="contraseña" required/>
+                            <label class="form-label" for="contrasena">Confirmar Contraseña</label>
+                            <div class="invalid-feedback">
+                                Porfavor ingrese la contraseña
+                            </div>
+                            <br>
+                            <p id="aparecerError" style="display: none; color: red">Ambas contraseñas deben ser iguales.</p>
+                        </div>
+                        <!-- Checkbox -->
+                        <div class="form-check d-flex">
+                            <input class="form-check-input" type="checkbox" value="" id="registerCheck" checked
+                                   aria-describedby="registerCheckHelpText" required/>
+                            <label class="form-check-label" for="registerCheck">
+                                Aceptar las condiciones.
+                            </label>
+                            <div class="invalid-feedback">
+                                Porfavor Aceptar las condiciones antes de continuar
+                            </div>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <label for="validationTooltip04" class="form-label">Pais</label>
+                            <select class="form-select" name="pais" id="pais" onchange="accederProvincias()" required>
+                                <option selected disabled value="">Elegir pais</option>
+                                <option value="AF">Afganistán</option>
+                                <option value="AL">Albania</option>
+                                <option value="DE">Alemania</option>
+                                <option value="AD">Andorra</option>
+                                <option value="AO">Angola</option>
+                                <option value="AI">Anguilla</option>
+                                <option value="AQ">Antártida</option>
+                                <option value="AG">Antigua y Barbuda</option>
+                                <option value="AN">Antillas Holandesas</option>
+                                <option value="SA">Arabia Saudí</option>
+                                <option value="DZ">Argelia</option>
+                                <option value="AR">Argentina</option>
+                                <option value="AM">Armenia</option>
+                                <option value="AW">Aruba</option>
+                                <option value="AU">Australia</option>
+                                <option value="AT">Austria</option>
+                                <option value="AZ">Azerbaiyán</option>
+                                <option value="BS">Bahamas</option>
+                                <option value="BH">Bahrein</option>
+                                <option value="BD">Bangladesh</option>
+                                <option value="BB">Barbados</option>
+                                <option value="BE">Bélgica</option>
+                                <option value="BZ">Belice</option>
+                                <option value="BJ">Benin</option>
+                                <option value="BM">Bermudas</option>
+                                <option value="BY">Bielorrusia</option>
+                                <option value="MM">Birmania</option>
+                                <option value="BO">Bolivia</option>
+                                <option value="BA">Bosnia y Herzegovina</option>
+                                <option value="BW">Botswana</option>
+                                <option value="BR">Brasil</option>
+                                <option value="BN">Brunei</option>
+                                <option value="BG">Bulgaria</option>
+                                <option value="BF">Burkina Faso</option>
+                                <option value="BI">Burundi</option>
+                                <option value="BT">Bután</option>
+                                <option value="CV">Cabo Verde</option>
+                                <option value="KH">Camboya</option>
+                                <option value="CM">Camerún</option>
+                                <option value="CA">Canadá</option>
+                                <option value="TD">Chad</option>
+                                <option value="CL">Chile</option>
+                                <option value="CN">China</option>
+                                <option value="CY">Chipre</option>
+                                <option value="VA">Ciudad del Vaticano (Santa Sede)</option>
+                                <option value="CO">Colombia</option>
+                                <option value="KM">Comores</option>
+                                <option value="CG">Congo</option>
+                                <option value="CD">Congo, República Democrática del</option>
+                                <option value="KR">Corea</option>
+                                <option value="KP">Corea del Norte</option>
+                                <option value="CI">Costa de Marfíl</option>
+                                <option value="CR">Costa Rica</option>
+                                <option value="HR">Croacia (Hrvatska)</option>
+                                <option value="CU">Cuba</option>
+                                <option value="DK">Dinamarca</option>
+                                <option value="DJ">Djibouti</option>
+                                <option value="DM">Dominica</option>
+                                <option value="EC">Ecuador</option>
+                                <option value="EG">Egipto</option>
+                                <option value="SV">El Salvador</option>
+                                <option value="AE">Emiratos Árabes Unidos</option>
+                                <option value="ER">Eritrea</option>
+                                <option value="SI">Eslovenia</option>
+                                <option value="ES">España</option>
+                                <option value="US">Estados Unidos</option>
+                                <option value="EE">Estonia</option>
+                                <option value="ET">Etiopía</option>
+                                <option value="FJ">Fiji</option>
+                                <option value="PH">Filipinas</option>
+                                <option value="FI">Finlandia</option>
+                                <option value="FR">Francia</option>
+                                <option value="GA">Gabón</option>
+                                <option value="GM">Gambia</option>
+                                <option value="GE">Georgia</option>
+                                <option value="GH">Ghana</option>
+                                <option value="GI">Gibraltar</option>
+                                <option value="GD">Granada</option>
+                                <option value="GR">Grecia</option>
+                                <option value="GL">Groenlandia</option>
+                                <option value="GP">Guadalupe</option>
+                                <option value="GU">Guam</option>
+                                <option value="GT">Guatemala</option>
+                                <option value="GY">Guayana</option>
+                                <option value="GF">Guayana Francesa</option>
+                                <option value="GN">Guinea</option>
+                                <option value="GQ">Guinea Ecuatorial</option>
+                                <option value="GW">Guinea-Bissau</option>
+                                <option value="HT">Haití</option>
+                                <option value="HN">Honduras</option>
+                                <option value="HU">Hungría</option>
+                                <option value="IN">India</option>
+                                <option value="ID">Indonesia</option>
+                                <option value="IQ">Irak</option>
+                                <option value="IR">Irán</option>
+                                <option value="IE">Irlanda</option>
+                                <option value="BV">Isla Bouvet</option>
+                                <option value="CX">Isla de Christmas</option>
+                                <option value="IS">Islandia</option>
+                                <option value="KY">Islas Caimán</option>
+                                <option value="CK">Islas Cook</option>
+                                <option value="CC">Islas de Cocos o Keeling</option>
+                                <option value="FO">Islas Faroe</option>
+                                <option value="HM">Islas Heard y McDonald</option>
+                                <option value="FK">Islas Malvinas</option>
+                                <option value="MP">Islas Marianas del Norte</option>
+                                <option value="MH">Islas Marshall</option>
+                                <option value="UM">Islas menores de Estados Unidos</option>
+                                <option value="PW">Islas Palau</option>
+                                <option value="SB">Islas Salomón</option>
+                                <option value="SJ">Islas Svalbard y Jan Mayen</option>
+                                <option value="TK">Islas Tokelau</option>
+                                <option value="TC">Islas Turks y Caicos</option>
+                                <option value="VI">Islas Vírgenes (EEUU)</option>
+                                <option value="VG">Islas Vírgenes (Reino Unido)</option>
+                                <option value="WF">Islas Wallis y Futuna</option>
+                                <option value="IL">Israel</option>
+                                <option value="IT">Italia</option>
+                                <option value="JM">Jamaica</option>
+                                <option value="JP">Japón</option>
+                                <option value="JO">Jordania</option>
+                                <option value="KZ">Kazajistán</option>
+                                <option value="KE">Kenia</option>
+                                <option value="KG">Kirguizistán</option>
+                                <option value="KI">Kiribati</option>
+                                <option value="KW">Kuwait</option>
+                                <option value="LA">Laos</option>
+                                <option value="LS">Lesotho</option>
+                                <option value="LV">Letonia</option>
+                                <option value="LB">Líbano</option>
+                                <option value="LR">Liberia</option>
+                                <option value="LY">Libia</option>
+                                <option value="LI">Liechtenstein</option>
+                                <option value="LT">Lituania</option>
+                                <option value="LU">Luxemburgo</option>
+                                <option value="MK">Macedonia, Ex-República Yugoslava de</option>
+                                <option value="MG">Madagascar</option>
+                                <option value="MY">Malasia</option>
+                                <option value="MW">Malawi</option>
+                                <option value="MV">Maldivas</option>
+                                <option value="ML">Malí</option>
+                                <option value="MT">Malta</option>
+                                <option value="MA">Marruecos</option>
+                                <option value="MQ">Martinica</option>
+                                <option value="MU">Mauricio</option>
+                                <option value="MR">Mauritania</option>
+                                <option value="YT">Mayotte</option>
+                                <option value="MX">México</option>
+                                <option value="FM">Micronesia</option>
+                                <option value="MD">Moldavia</option>
+                                <option value="MC">Mónaco</option>
+                                <option value="MN">Mongolia</option>
+                                <option value="MS">Montserrat</option>
+                                <option value="MZ">Mozambique</option>
+                                <option value="NA">Namibia</option>
+                                <option value="NR">Nauru</option>
+                                <option value="NP">Nepal</option>
+                                <option value="NI">Nicaragua</option>
+                                <option value="NE">Níger</option>
+                                <option value="NG">Nigeria</option>
+                                <option value="NU">Niue</option>
+                                <option value="NF">Norfolk</option>
+                                <option value="NO">Noruega</option>
+                                <option value="NC">Nueva Caledonia</option>
+                                <option value="NZ">Nueva Zelanda</option>
+                                <option value="OM">Omán</option>
+                                <option value="NL">Países Bajos</option>
+                                <option value="PA">Panamá</option>
+                                <option value="PG">Papúa Nueva Guinea</option>
+                                <option value="PK">Paquistán</option>
+                                <option value="PY">Paraguay</option>
+                                <option value="PE">Perú</option>
+                                <option value="PN">Pitcairn</option>
+                                <option value="PF">Polinesia Francesa</option>
+                                <option value="PL">Polonia</option>
+                                <option value="PT">Portugal</option>
+                                <option value="PR">Puerto Rico</option>
+                                <option value="QA">Qatar</option>
+                                <option value="UK">Reino Unido</option>
+                                <option value="CF">República Centroafricana</option>
+                                <option value="CZ">República Checa</option>
+                                <option value="ZA">República de Sudáfrica</option>
+                                <option value="DO">República Dominicana</option>
+                                <option value="SK">República Eslovaca</option>
+                                <option value="RE">Reunión</option>
+                                <option value="RW">Ruanda</option>
+                                <option value="RO">Rumania</option>
+                                <option value="RU">Rusia</option>
+                                <option value="EH">Sahara Occidental</option>
+                                <option value="KN">Saint Kitts y Nevis</option>
+                                <option value="WS">Samoa</option>
+                                <option value="AS">Samoa Americana</option>
+                                <option value="SM">San Marino</option>
+                                <option value="VC">San Vicente y Granadinas</option>
+                                <option value="SH">Santa Helena</option>
+                                <option value="LC">Santa Lucía</option>
+                                <option value="ST">Santo Tomé y Príncipe</option>
+                                <option value="SN">Senegal</option>
+                                <option value="SC">Seychelles</option>
+                                <option value="SL">Sierra Leona</option>
+                                <option value="SG">Singapur</option>
+                                <option value="SY">Siria</option>
+                                <option value="SO">Somalia</option>
+                                <option value="LK">Sri Lanka</option>
+                                <option value="PM">St Pierre y Miquelon</option>
+                                <option value="SZ">Suazilandia</option>
+                                <option value="SD">Sudán</option>
+                                <option value="SE">Suecia</option>
+                                <option value="CH">Suiza</option>
+                                <option value="SR">Surinam</option>
+                                <option value="TH">Tailandia</option>
+                                <option value="TW">Taiwán</option>
+                                <option value="TZ">Tanzania</option>
+                                <option value="TJ">Tayikistán</option>
+                                <option value="TF">Territorios franceses del Sur</option>
+                                <option value="TP">Timor Oriental</option>
+                                <option value="TG">Togo</option>
+                                <option value="TO">Tonga</option>
+                                <option value="TT">Trinidad y Tobago</option>
+                                <option value="TN">Túnez</option>
+                                <option value="TM">Turkmenistán</option>
+                                <option value="TR">Turquía</option>
+                                <option value="TV">Tuvalu</option>
+                                <option value="UA">Ucrania</option>
+                                <option value="UG">Uganda</option>
+                                <option value="UY">Uruguay</option>
+                                <option value="UZ">Uzbekistán</option>
+                                <option value="VU">Vanuatu</option>
+                                <option value="VE">Venezuela</option>
+                                <option value="VN">Vietnam</option>
+                                <option value="YE">Yemen</option>
+                                <option value="YU">Yugoslavia</option>
+                                <option value="ZM">Zambia</option>
+                                <option value="ZW">Zimbabue</option>
+                            </select>
+                        </div>
+                        <div class="form-outline mb-4" id="divPais1" style="display: none; width: 100%">
+                            <label for="validationTooltip04" class="form-label">Provincia</label>
+                            <select class="form-select" name="provinciaAR" id="pais1" required>
+                                <option value="BuenosAires">  BuenosAires</option>
+                                <option value="Catamarca"> Catamarca</option>
+                                <option value="Chaco"> Chaco</option>
+                                <option value="Chubut"> Chubut</option>
+                                <option value="Córdoba"> Córdoba</option>
+                                <option value="Corrientes"> Corrientes</option>
+                                <option value="EntreRios"> EntreRios</option>
+                                <option value="Formosas"> Formosas</option>
+                                <option value="Jujuy"> Jujuy</option>
+                                <option value="LaPampa"> LaPampa</option>
+                                <option value="LaRioja"> LaRioja</option>
+                                <option value="Mendoza"> Mendoza</option>
+                                <option value="Misiones"> Misiones</option>
+                                <option value="Neuquén"> Neuquén</option>
+                                <option value="RíoNegro"> RíoNegro</option>
+                                <option value="Salta"> Salta</option>
+                                <option value="SanJuan"> SanJuan</option>
+                                <option value="SanLuis"> SanLuis</option>
+                                <option value="SantaCruz"> SantaCruz</option>
+                                <option value="SantaFe"> SantaFe</option>
+                                <option value="SantiagoDelEstero"> SantiagoDelEstero</option>
+                                <option value="TierradelFuego"> TierradelFuego</option>
+                                <option value="Tucumán"> Tucumán</option>
+                            </select>
+                        </div>
+                        <div class="form-outline mb-4" id="divPais2" style="display: none; width: 100%">
+                            <label for="validationTooltip04" class="form-label">Provincia</label>
+                            <select class="form-select" name="provinciaCH" id="pais2" required>
+                                <option value="Arica">  Arica</option>
+                                <option value="Iquique"> Iquique</option>
+                                <option value="Antofagasta"> Antofagasta</option>
+                                <option value="Copiapó"> Copiapó</option>
+                                <option value="LaSerena"> La Serena</option>
+                                <option value="Valparaiso"> Valparaíso</option>
+                                <option value="Santiago"> Santiago</option>
+                                <option value="Rancagua"> Rancagua</option>
+                                <option value="Talca"> Talca</option>
+                                <option value="Concepción"> Concepción</option>
+                                <option value="Temuco"> Temuco</option>
+                                <option value="Valdivia"> Valdivia</option>
+                                <option value="PuertoMontt"> Puerto Montt</option>
+                                <option value="Coyhaique"> Coyhaique</option>
+                                <option value="PuntaArenas"> Punta Arenas</option>
+                            </select>
+                        </div>
+                        <!-- Provincia input -->
+                        <div class="form-outline mb-4" id="divPais3" style="display: none; width: 100%">
+                        <input type="text" class="form-control" name="provinciaOTRO" id="pais3" placeholder="región" required/>
+                            <label class="form-label" for="provincia">Region</label>
+                            <div class="invalid-feedback">
+                                Porfavor ingrese la provincia
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px;">
+                            <label for="validationTooltip04" class="form-label">Miembros del Equipo</label>
+                            <select class="form-select" id="validationTooltip04" onchange="accederMiembros()" required>
+                                <option selected disabled value="">Elegir cantidad de miembros</option>
+                                <option value="one">1</option>
+                                <option value="two">2</option>
+                                <option value="three">3</option>
+                                <option value="four">4</option>
+                                <option value="five">5</option>
+                                <option value="six">6</option>
+                                <option value="seven">7</option>
+                                <option value="eight">8</option>
+                                <option value="nine">9</option>
+                            </select>
+                            <label class="form-label"></label>
+                            <div class="invalid-feedback">
+                                Porfavor seleccione la cantidad de miembros
+                            </div>
+                            <div id="1" style="display: none; margin-top: 35px; width: 100%;">
+                                <!-- Username input 1 -->
+                                <div class="form-outline mb-4" style="margin-top: -25px;">
+                                    <input type="text" id="us-one" class="form-control" placeholder="Usuario Miembro 1" disabled/>
+                                    <label class="form-label">Usuario Miembro 1</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el usuario
+                                    </div>
+                                </div>
+                                <!-- Email input 1 -->
+                                <div class="form-outline mb-4">
+                                    <div class="input-group">
+                                        <input type="text" id="em-one" class="form-control" placeholder="Gmail Miembro 1" aria-label="Recipient's username" aria-describedby="basic-addon2" disabled>
+                                        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                                    </div>
+                                    <label class="form-label" for="mail">Gmail Miembro 1</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el Gmail
+                                    </div>
+                                    <br>
+                                    <p id="aparecerErrorGmail" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                            </div>
+                            <div id="2" style="display: none; width: 100%">
+                                <!-- Username input 2 -->
+                                <div class="form-outline mb-4" >
+                                    <input type="text" name="usuariodos" id="usuario2" placeholder="Usuario Miembro 2" class="form-control" />
+                                    <label class="form-label" >Usuario Miembro 2</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el usuario
+                                    </div>
+                                </div>
+
+                                <!-- Email input 2 -->
+
+                                <div class="form-outline mb-4">
+                                    <div class="input-group">
+                                        <input type="text" id="mail2" class="form-control" name="maildos" placeholder="Gmail Miembro 2" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+                                        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                                    </div>
+                                    <label class="form-label" for="mail">Gmail Miembro 2</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el Gmail
+                                    </div>
+                                    <br>
+                                    <p id="aparecerErrorGmail2" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                </div>
+                            </div>
+                            <div id="3" style="display: none; width: 100%">
+                                <!-- Username input 3 -->
+                                <div class="form-outline mb-4" >
+                                    <input type="text" name="usuariotres" id="usuario3" placeholder="Usuario Miembro 3" class="form-control" />
+                                    <label class="form-label">Usuario Miembro 3</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el usuario
+                                    </div>
+                                </div>
+
+                                <!-- Email input 3 -->
+                                <div class="form-outline mb-4">
+                                    <div class="input-group">
+                                        <input type="text" id="mail3" class="form-control" name="mailtres" placeholder="Gmail Miembro 3" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+                                        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                                    </div>
+                                    <label class="form-label" for="mail">Gmail Miembro 3</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el Gmail
+                                    </div>
+                                    <br>
+                                    <p id="aparecerErrorGmail3" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                </div>
+                            </div>
+                            <div id="4" style="display: none; width: 100%">
+                                <!-- Username input 4 -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" class="form-control" name="usuariocuatro"  id="usuario4"placeholder="Usuario Miembro 4"/>
+                                    <label class="form-label">Usuario Miembro 4</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el usuario
+                                    </div>
+                                </div>
+
+                                <!-- Email input 4 -->
+                                <div class="form-outline mb-4">
+                                    <div class="input-group">
+                                        <input type="text" id="mail4" class="form-control" name="mailcuatro" placeholder="Gmail Miembro 4" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+                                        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                                    </div>
+                                    <label class="form-label" for="mail">Gmail Miembro 4</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el Gmail
+                                    </div>
+                                    <br>
+                                    <p id="aparecerErrorGmail4" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                </div>
+                            </div>
+                            <div id="5" style="display: none; width: 100%">
+                                <!-- Username input 5 -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" class="form-control" name="usuariocinco" id="usuario5" placeholder="Usuario Miembro 5"/>
+                                    <label class="form-label"/>Usuario Miembro 5 </label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el usuario
+                                    </div>
+                                </div>
+
+                                <!-- Email input 5 -->
+                                <div class="form-outline mb-4">
+                                    <div class="input-group">
+                                        <input type="text" id="mail5" class="form-control" name="mailcinco" placeholder="Gmail Miembro 5" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+                                        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                                    </div>
+                                    <label class="form-label" for="mail">Gmail Miembro 5</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el Gmail
+                                    </div>
+                                    <br>
+                                    <p id="aparecerErrorGmail5" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                </div>
+                            </div>
+                            <div id="6" style="display: none; width: 100%">
+                                <!-- Username input 6 -->
+                                <div class="form-outline mb-4" >
+                                    <input type="text" name="usuarioseis" id="usuario6" placeholder="Usuario Miembro 6" class="form-control" />
+                                    <label class="form-label" >Usuario Miembro 6</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el usuario
+                                    </div>
+                                </div>
+
+                                <!-- Email input 6 -->
+                                <div class="form-outline mb-4">
+                                    <div class="input-group">
+                                        <input type="text" id="mail6" class="form-control" name="mailseis" placeholder="Gmail Miembro 6" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+                                        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                                    </div>
+                                    <label class="form-label" for="mail">Gmail Miembro 6</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el Gmail
+                                    </div>
+                                    <br>
+                                    <p id="aparecerErrorGmail6" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                </div>
+                            </div>
+                            <div id="7" style="display: none; width: 100%">
+                                <!-- Username input 7 -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" name="usuariosiete" id="usuario7" placeholder="Usuario Miembro 7" class="form-control" />
+                                    <label class="form-label" >Usuario Miembro 7</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el usuario
+                                    </div>
+                                </div>
+
+                                <!-- Email input 7 -->
+                                <div class="form-outline mb-4">
+                                    <div class="input-group">
+                                        <input type="text" id="mail7" class="form-control" name="mailsiete" placeholder="Gmail Miembro 7" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+                                        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                                    </div>
+                                    <label class="form-label" for="mail">Gmail Miembro 7</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el Gmail
+                                    </div>
+                                    <br>
+                                    <p id="aparecerErrorGmail7" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                </div>
+                            </div>
+                            <div id="8" style="display: none; width: 100%">
+                                <!-- Username input 8 -->
+                                <div class="form-outline mb-4">
+                                    <input type="text" name="usuarioocho" id="usuario8" placeholder="Usuario Miembro 8"class="form-control" />
+                                    <label class="form-label" >Usuario Miembro 8</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el usuario
+                                    </div>
+                                </div>
+
+                                <!-- Email input 8 -->
+                                <div class="form-outline mb-4">
+                                    <div class="input-group">
+                                        <input type="text" id="mail8" class="form-control" name="mailocho" placeholder="Gmail Miembro 8" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+                                        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                                    </div>
+                                    <label class="form-label" for="mail">Gmail Miembro 8</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el Gmail
+                                    </div>
+                                    <br>
+                                    <p id="aparecerErrorGmail8" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                </div>
+                            </div>
+                            <div id="9" style="display: none; width: 100%">
+                                <!-- Username input 9 -->
+                                <div class="form-outline mb-4" >
+                                    <input type="text" name="usuarionueve" id="usuario9" placeholder="Usuario Miembro 9" class="form-control" />
+                                    <label class="form-label" >Usuario Miembro 9</label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el usuario
+                                    </div>
+                                </div>
+
+                                <!-- Email input 9 -->
+                                <div class="form-outline mb-4">
+                                    <div class="input-group">
+                                        <input type="text" id="mail9" class="form-control" name="mailnueve" placeholder="Gmail Miembro 9" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
+                                        <span class="input-group-text" id="basic-addon2">@gmail.com</span>
+                                    </div>
+                                    <label class="form-label" for="mail">Gmail Miembro 9 </label>
+                                    <div class="invalid-feedback">
+                                        Porfavor ingrese el Gmail
+                                    </div>
+                                    <br>
+                                    <p id="aparecerErrorGmail9" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script src="/scripts/scripts.js"></script>
+</body>
+</html>

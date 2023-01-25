@@ -1,6 +1,3 @@
-body{
-    background-color: #21222c;
-}
 /* ----- -----  Estilos para Validacion ----- ----- */
 .formulario__grupo-correcto .formulario__validacion-estado {
 	color: #1ed12d;
@@ -27,4 +24,7 @@ body{
 
 .formulario__input-error-activo {
 	display: block;
+}
+#perfecto{
+    color: red;
 }

@@ -1,6 +1,7 @@
 package com.example.Login.entities;
 
 
+import com.example.Login.enumerations.Rol;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,11 +14,10 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Usuario extends Base{
 
-    @Column(name="nombre")
-    private String nombre;
+    @Column(name="jefeEquipo")
+    private Boolean jefeEquipo;
 
 
     @Column(name="mail")
@@ -29,5 +29,18 @@ public class Usuario extends Base{
     @Column(name = "contrasena")
     private String contrasena;
 
+    @Column(name = "rol")
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "grupo")
+    private Grupo grupo;
+
+    @Column(name = "pais")
+    private String pais;
+
+    @Column(name = "provincia")
+    private String provincia;
 
 }

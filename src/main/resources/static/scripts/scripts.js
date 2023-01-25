@@ -3,6 +3,31 @@ var input = document.getElementById("contrasena2")
 input.addEventListener('keyup', validarContrasena);
 input.addEventListener('blur', validarContrasena);
 
+function validarGmail() {
+
+  var expreg = /@/;
+  var sinError = 0;
+  for (let j = 1 ; j < 10 ; j++) {
+    let gmail = document.getElementById("mail"+j).value;
+    let errorGmail = document.getElementById("aparecerErrorGmail"+j);
+
+    if(expreg.test(gmail)){
+      errorGmail.style.display ="inline-block";
+
+    }
+    else{
+      errorGmail.style.display ="none";
+      sinError = sinError + 1
+    }
+  }
+  if (sinError == 9){
+    return false;
+  }
+  else{
+    return true;
+  }
+}
+
 function validarContrasena(){
 
     let inputContrasena1 = document.getElementById("contrasena")
@@ -42,6 +67,29 @@ function iniciarValidacion(){
 
         }
 }
+function iniciarValidacionProvincias(){
+    for (let j = 1; j < 4 ; j++) {
+            document.getElementById("divPais"+j).style.display = "none";
+            document.getElementById("pais"+j).removeAttribute("required");
+            }
+}
+function accederProvincias(){
+    var pais = document.getElementById("pais").value;
+
+    iniciarValidacionProvincias();
+    if (pais == "AR") {
+
+            document.getElementById("divPais1").style.display = "inline-block";
+            document.getElementById("pais1").required = 'true';
+
+    }else if (pais == "CL"){
+            document.getElementById("divPais2").style.display = "inline-block";
+            document.getElementById("pais2").required = 'true';
+    }else{
+            document.getElementById("divPais3").style.display = "inline-block";
+            document.getElementById("pais3").required = 'true';
+    }
+}
 function accederMiembros(){
    var valorCuadro = document.getElementById("validationTooltip04").value;
 
@@ -52,7 +100,6 @@ function accederMiembros(){
 
    switch (valorCuadro) {
      case "one":
-       document.getElementById("1").style.display = "inline-block";
        borrarInputs(2);
 
        break;
@@ -118,6 +165,10 @@ function accederMiembros(){
 
       }
       if(validarContrasena()){
+        event.preventDefault()
+        event.stopPropagation()
+      }
+      if(validarGmail()){
         event.preventDefault()
         event.stopPropagation()
       }
