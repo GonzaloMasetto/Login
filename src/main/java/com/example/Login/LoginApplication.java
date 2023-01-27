@@ -12,6 +12,7 @@ public class LoginApplication extends SpringBootServletInitializer {
 		return builder.sources(LoginApplication.class);
 	}
 
+
 	public static void main(String[] args) {
 		SpringApplication.run(LoginApplication.class, args);
 	}
