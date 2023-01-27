@@ -90,13 +90,6 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implement
         }
     }
 
-    public void mensajeLiberium(Grupo grupo){
-        Context context = new Context();
-
-        String htmlContent = templateEngine.process("mensajecliente", context);
-        simpleTextMessage(htmlContent);
-    }
-
 
     public void mensajeCliente(String nombre, Boolean grupo){
         Context context = new Context();

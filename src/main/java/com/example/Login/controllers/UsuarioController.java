@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-@CrossOrigin(origins = "*")
 public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServiceImpl> {
 
     @Autowired
@@ -107,15 +106,15 @@ public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServic
 
                 modelo.put("exito", "Registrado correctamente");
             }
-           // if (usuariodos.equals("")){
-            //    svcUsuario.mensajeCliente(usuario,false);
+            if (usuariodos.equals("")){
+                svcUsuario.mensajeCliente(usuario,false);
 
-           // }else{
-           //     svcUsuario.mensajeCliente(usuario,true);
-           // }
+            }else{
+                svcUsuario.mensajeCliente(usuario,true);
+            }
             svcUsuario.mensajeLiberium(grupo,pageable);
             modelo.put("exito", "Registrado correctamente");
-            return  "inicio";
+            return  "index";
 
         }catch(Exception e){
             modelo.put("error", e.getMessage());
