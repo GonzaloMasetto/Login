@@ -31,5 +31,9 @@ public class MainController {
 
             return "index";
     }
+    @GetMapping("/condiciones")
+    public String condiciones() {
+        return "condiciones";
+    }
 
 }

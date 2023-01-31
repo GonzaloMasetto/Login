@@ -14,25 +14,13 @@ import org.springframework.web.bind.annotation.*;
 
 
 
-
+@RequestMapping("/usuario")
 @Controller
 public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServiceImpl> {
 
     @Autowired
     UsuarioService svcUsuario;
     String provincia;
-
-
-    @GetMapping("/perfil")
-    public String perfil(Model model) {
-        try {
-            model.addAttribute("usuarios", svcUsuario.listarUsuarios());
-            return "perfil";
-        } catch (Exception e) {
-            model.addAttribute("error", e.getMessage());
-            return "error";
-        }
-    }
 
     @PostMapping(value = "/registro")
     public String registro(@RequestParam String usuario, @RequestParam String mail, @RequestParam String contrasena, @RequestParam String pais,
@@ -107,10 +95,10 @@ public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServic
                 modelo.put("exito", "Registrado correctamente");
             }
             if (usuariodos.equals("")){
-                svcUsuario.mensajeCliente(usuario,false);
+                svcUsuario.mensajeCliente(usuario,false,mail+"@gmail.com");
 
             }else{
-                svcUsuario.mensajeCliente(usuario,true);
+                svcUsuario.mensajeCliente(usuario,true,mail+"@gmail.com");
             }
             svcUsuario.mensajeLiberium(grupo,pageable);
             modelo.put("exito", "Registrado correctamente");

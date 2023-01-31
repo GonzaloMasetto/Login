@@ -11,82 +11,36 @@
 
 </head>
 <body>
-<nav th:fragment="nav_bar" class="navbar navbar-expand-lg navbar-light bg-orange" style="background-color: red">
-    <div class="container-fluid mt-2 mb-2">
-        <a class="navbar-brand text-light" th:href="@{/inicio}" style="font-family: serif; font-style:oblique 5deg;">Login</a>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll position-absolute end-0" style="--bs-scroll-height: 100px;">
-                <li class="nav-item dropdown">
-                    <a class="text-light nav-link dropdown-toggle" sec:authorize="hasAnyRole('ADMIN', 'CLIENTE')" th:href="@{/perfil}" style="margin-right: 10px" data-bs-toggle="dropdown"><i class="bi bi-person" style="font-size: 2.75rem;"></i><span class="sr-only"></span></a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" sec:authorize="hasRole('ADMIN')" th:href="@{/perfil}">Ir a perfil</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" sec:authorize="hasAnyRole('ADMIN', 'CLIENTE')" th:href="@{/logout}">Cerrar sesión</a></li>
-                    </ul>
-                </li>
-
-                <button class="btn btn-light d-grid gap-2 d-md-block" style="height: 35px; width: 90px; margin-right: 15px; margin-top: 20px;" type="button" data-bs-toggle="modal" data-bs-target="#login" th:if="${session.usuariosession == null}">Login</button>
-
-                <button class="btn btn-light d-grid gap-2 d-md-block" style="height: 35px; width: 90px; margin-right: 15px; margin-top: 20px;" type="button" data-bs-toggle="modal" data-bs-target="#signup" th:if="${session.usuariosession == null}">Sign Up</button>
 
 
 
-            </ul>
-        </div>
-    </div>
-    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Iniciar Sesión</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form class="" th:action="@{/logincheck}" method="post">
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="nombre@example.com" name="mail">
-                            <label for="floatingInput">Mail</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="contraseña" name="contrasena">
-                            <label for="floatingPassword">Contraseña</label>
-                        </div>
-                        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Log in</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                </div>
-            </div>
-        </div>
-    </div>
+    <button class="btn btn-success d-grid gap-2 d-md-block" style="margin-right: 15px; margin-top: 20px;" type="button" data-bs-toggle="modal" data-bs-target="#signup">Registrarse</button>
+
     <div class="modal fade" id="signup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabe">Registro</h1>
+                    <img th:src="@{/img/icono.png}" style="width:30px">
+                    <h1 class="modal-title fs-5" id="exampleModalLabe">Registro Liberium</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form th:action="@{/registro}" method="post" class="needs-validation" id="formularioRegistro" novalidate>
-                        <div class="text-center mb-3">
-                            <p>Liberium</p>
-                        </div>
+                    <form th:action="@{/usuario/registro}" method="post" class="needs-validation" id="formularioRegistro" novalidate>
                         <!-- Username input -->
                         <div class="form-outline mb-4">
-                            <input type="text" class="form-control" name="usuario" id="usuario" placeholder="usuario" required/>
                             <label class="form-label" for="usuario">Usuario</label>
+                            <input type="text" class="form-control" name="usuario" id="usuario" placeholder="usuario" required/>
                             <div class="invalid-feedback">
                                 Porfavor ingrese el usuario
                             </div>
                         </div>
                         <!-- Email input -->
                         <div class="form-outline mb-4">
+                            <label class="form-label" for="mail">Gmail</label>
                             <div class="input-group">
                                 <input type="text" id="mail1" class="form-control" name="mail" placeholder="Gmail" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
                                 <span class="input-group-text" id="basic-addon2">@gmail.com</span>
                             </div>
-                            <label class="form-label" for="mail">Gmail</label>
                             <div class="invalid-feedback">
                                 Porfavor ingrese el Gmail
                             </div>
@@ -96,33 +50,25 @@
 
                         <!-- Password input -->
                         <div class="form-outline mb-4" id="grupo__password">
-                            <input type="password" id="contrasena"  class="form-control" name="contrasena" placeholder="contraseña" required/>
                             <label class="form-label" for="contrasena">Contraseña</label>
+                            <input type="password" id="contrasena"  class="form-control" name="contrasena" placeholder="contraseña" required/>
+
                             <div class="invalid-feedback">
                                 Porfavor ingrese la contraseña
                             </div>
                         </div>
                         <!-- Password input -->
                         <div class="form-outline mb-4"  id="grupo__password2">
-                            <input type="password" id="contrasena2"  class="form-control" name="contrasena2" placeholder="contraseña" required/>
                             <label class="form-label" for="contrasena">Confirmar Contraseña</label>
+                            <input type="password" id="contrasena2"  class="form-control" name="contrasena2" placeholder="contraseña" required/>
+
                             <div class="invalid-feedback">
                                 Porfavor ingrese la contraseña
                             </div>
                             <br>
                             <p id="aparecerError" style="display: none; color: red">Ambas contraseñas deben ser iguales.</p>
                         </div>
-                        <!-- Checkbox -->
-                        <div class="form-check d-flex">
-                            <input class="form-check-input" type="checkbox" value="" id="registerCheck" checked
-                                   aria-describedby="registerCheckHelpText" required/>
-                            <label class="form-check-label" for="registerCheck">
-                                Aceptar las condiciones.
-                            </label>
-                            <div class="invalid-feedback">
-                                Porfavor Aceptar las condiciones antes de continuar
-                            </div>
-                        </div>
+
 
                         <div class="form-outline mb-4">
                             <label for="validationTooltip04" class="form-label">Pais</label>
@@ -263,7 +209,7 @@
                                 <option value="LI">Liechtenstein</option>
                                 <option value="LT">Lituania</option>
                                 <option value="LU">Luxemburgo</option>
-                                <option value="MK">Macedonia, Ex-República Yugoslava de</option>
+                                <option value="MK">Macedonia</option>
                                 <option value="MG">Madagascar</option>
                                 <option value="MY">Malasia</option>
                                 <option value="MW">Malawi</option>
@@ -386,8 +332,8 @@
                                 <option value="Salta"> Salta</option>
                                 <option value="SanJuan"> San Juan</option>
                                 <option value="SanLuis"> San Luis</option>
-                                <option value="SantaCruz"> SantaCruz</option>
-                                <option value="SantaFe"> SantaFe</option>
+                                <option value="SantaCruz"> Santa Cruz</option>
+                                <option value="SantaFe"> Santa Fe</option>
                                 <option value="SantiagoDelEstero"> Santiago Del Estero</option>
                                 <option value="TierradelFuego"> Tierra del Fuego</option>
                                 <option value="Tucumán"> Tucumán</option>
@@ -416,8 +362,9 @@
                         </div>
                         <!-- Provincia input -->
                         <div class="form-outline mb-4" id="divPais3" style="display: none; width: 100%">
-                        <input type="text" class="form-control" name="provinciaOTRO" id="pais3" placeholder="región" required/>
                             <label class="form-label" for="provincia">Provincia/Zona</label>
+                            <input type="text" class="form-control" name="provinciaOTRO" id="pais3" placeholder="región" required/>
+
                             <div class="invalid-feedback">
                                 Porfavor ingrese la Provincia/Zona
                             </div>
@@ -656,7 +603,22 @@
                                 </div>
                             </div>
                         </div>
-                        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+                         <!-- Checkbox -->
+                        <div class="form-check d-flex">
+                                <input class="form-check-input" type="checkbox" value="" id="registerCheck"
+                                       aria-describedby="registerCheckHelpText" required/>
+                                <label class="form-check-label" for="registerCheck">
+                                    Aceptar bases y condiciones.
+                                </label>
+                                <div class="invalid-feedback">
+                                    Porfavor Aceptar bases y condiciones antes de continuar
+                                </div>
+
+                        </div>
+                        <div>
+                                <a th:href="@{/condiciones}" target="_blank" style="font-size: 11px;color: #8c8c8c; line-height: 1.5; text-align: justify; font-family: Arial, sans-serif;">Leer bases y condiciones</a>
+                         </div>
+                        <button class="w-100 mb-2 btn btn-lg rounded-3 btn-success" type="submit" style="margin-top: 20px;">Registrarse</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -664,8 +626,190 @@
             </div>
         </div>
     </div>
-</nav>
 
-<script src="/scripts/scripts.js"></script>
+<script th:inline="javascript">
+
+var input = document.getElementById("contrasena2")
+input.addEventListener('keyup', validarContrasena);
+input.addEventListener('blur', validarContrasena);
+
+function validarGmail() {
+
+  var expreg = /@/;
+  var sinError = 0;
+  for (let j = 1 ; j < 10 ; j++) {
+    let gmail = document.getElementById("mail"+j).value;
+    let errorGmail = document.getElementById("aparecerErrorGmail"+j);
+
+    if(expreg.test(gmail)){
+      errorGmail.style.display ="inline-block";
+
+    }
+    else{
+      errorGmail.style.display ="none";
+      sinError = sinError + 1
+    }
+  }
+  if (sinError == 9){
+    return false;
+  }
+  else{
+    return true;
+  }
+}
+
+function validarContrasena(){
+
+    let inputContrasena1 = document.getElementById("contrasena")
+    let inputContrasena2 = document.getElementById("contrasena2")
+    let parrafoError = document.getElementById("aparecerError")
+
+    if(inputContrasena1.value != inputContrasena2.value && inputContrasena2.value != ""){
+       parrafoError.style.display = "inline-block";
+       return true
+
+
+    }else{
+       parrafoError.style.display = "none";
+       return false
+    }
+}
+function borrarInputs(i){
+for (let j = i ; j < 10 ; j++) {
+    document.getElementById("usuario"+j).value = "";
+    document.getElementById("mail"+j).value = "";
+    }
+}
+function asignarAtributos(i){
+  document.getElementById("us-one").value = document.getElementById("usuario").value;
+  document.getElementById("em-one").value = document.getElementById("mail1").value;
+  document.getElementById(1).style.display = "inline-block";
+  for (let j = 2 ; j < i+1 ; j++) {
+    document.getElementById(j).style.display = "inline-block";
+    document.getElementById("usuario"+j).required = 'true';
+    document.getElementById("mail"+j).required = 'true';
+    }
+}
+function iniciarValidacion(){
+    document.getElementById("1").style.display = "none";
+    for (let j = 2 ; j < 10 ; j++) {
+        document.getElementById(j).style.display = "none";
+        document.getElementById("usuario"+j).removeAttribute("required");
+        document.getElementById("mail"+j).removeAttribute("required");
+
+        }
+}
+function iniciarValidacionProvincias(){
+    for (let j = 1; j < 4 ; j++) {
+            document.getElementById("divPais"+j).style.display = "none";
+            document.getElementById("pais"+j).removeAttribute("required");
+            }
+}
+function accederProvincias(){
+    var pais = document.getElementById("pais").value;
+
+    iniciarValidacionProvincias();
+    if (pais == "AR") {
+
+            document.getElementById("divPais1").style.display = "inline-block";
+            document.getElementById("pais1").required = 'true';
+
+    }else if (pais == "CL"){
+            document.getElementById("divPais2").style.display = "inline-block";
+            document.getElementById("pais2").required = 'true';
+    }else{
+            document.getElementById("divPais3").style.display = "inline-block";
+            document.getElementById("pais3").required = 'true';
+    }
+}
+function accederMiembros(){
+   var valorCuadro = document.getElementById("validationTooltip04").value;
+
+
+   iniciarValidacion();
+
+
+
+   switch (valorCuadro) {
+     case "one":
+       borrarInputs(2);
+
+       break;
+     case "two":
+       asignarAtributos(2);
+       borrarInputs(3);
+       break;
+     case "three":
+       asignarAtributos(3);
+       borrarInputs(4);
+
+       break;
+     case "four":
+       asignarAtributos(4);
+       borrarInputs(5);
+
+       break;
+     case "five":
+       asignarAtributos(5);
+       borrarInputs(6);
+
+       break;
+     case "six":
+       asignarAtributos(6);
+       borrarInputs(7);
+
+       break;
+     case "seven":
+       asignarAtributos(7);
+       borrarInputs(8);
+
+       break;
+     case "eight":
+       asignarAtributos(8);
+       borrarInputs(9);
+
+       break;
+     case "nine":
+       asignarAtributos(9);
+       break;
+
+   }
+   var valorInputUs = document.getElementById("usuario").value
+   var valorInputEm = document.getElementById("mail").value
+
+   document.getElementById("us-one").value = valorInputUs
+   document.getElementById("em-one").value = valorInputEm
+
+ }
+(() => {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.from(forms).forEach(form => {
+    form.addEventListener('submit', event => {
+      if (!form.checkValidity()) {
+
+        event.preventDefault()
+        event.stopPropagation()
+
+      }
+      if(validarContrasena()){
+        event.preventDefault()
+        event.stopPropagation()
+      }
+      if(validarGmail()){
+        event.preventDefault()
+        event.stopPropagation()
+      }
+
+
+      form.classList.add('was-validated')
+    }, false)
+  })
+})()
+</script>
 </body>
 </html>

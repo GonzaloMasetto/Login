@@ -1,7 +1,6 @@
 package com.example.Login.entities;
 
 
-import com.example.Login.enumerations.Rol;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,10 +27,6 @@ public class Usuario extends Base{
 
     @Column(name = "contrasena")
     private String contrasena;
-
-    @Column(name = "rol")
-    @Enumerated(EnumType.STRING)
-    private Rol rol;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "grupo")

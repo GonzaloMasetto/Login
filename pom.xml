@@ -12,11 +12,11 @@
 	<artifactId>Login</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Login</name>
+	<packaging>war</packaging>
 	<description>Login to add to the program</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
-	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -103,9 +103,11 @@
     </dependencies>
 
 	<build>
-		<finalName>liberium</finalName>
 		<plugins>
 			<plugin>
+				<configuration>
+					<finalName>liberium</finalName>
+				</configuration>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>

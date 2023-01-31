@@ -2,7 +2,7 @@ package com.example.Login.services;
 
 import com.example.Login.entities.Grupo;
 import com.example.Login.entities.Usuario;
-import com.example.Login.enumerations.Rol;
+
 import com.example.Login.repositories.BaseRepository;
 import com.example.Login.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,27 +10,21 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
 import javax.mail.Multipart;
+import javax.mail.Part;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Service
@@ -82,7 +76,6 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implement
             usuario.setMail(mail+"@gmail.com");
             usuario.setJefeEquipo(jefeEquipo);
             usuario.setContrasena(new BCryptPasswordEncoder().encode(contrasena));
-            usuario.setRol(Rol.CLIENTE);
             usuario.setGrupo(grupo);
             usuario.setPais(pais);
             usuario.setProvincia(provincia);
@@ -91,37 +84,39 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implement
     }
 
 
-    public void mensajeCliente(String nombre, Boolean grupo){
+    public void mensajeCliente(String nombre, Boolean grupo,String para){
         Context context = new Context();
         context.setVariable("grupo", grupo);
         context.setVariable("nombre", nombre);
 
         String htmlContent = templateEngine.process("mensajecliente", context);
-        simpleTextMessage(htmlContent);
+        enviarCliente(htmlContent,para);
     }
     public void mensajeLiberium(Grupo grupo,Pageable pageable) throws Exception {
         Context context = new Context();
         Page<Usuario> usuarios = searchByGrupo(grupo.getId(),pageable);
         context.setVariable("usuarios", usuarios);
         String htmlContent = templateEngine.process("mensajeliberium", context);
-        simpleTextMessage(htmlContent);
+        enviarLiberium(htmlContent,"contactoliberium@gmail.com");
+        enviarLiberium(htmlContent,"hernanjrivera@gmail.com");
+        enviarLiberium(htmlContent,"lucasgomezportillo@gmail.com");
+        enviarLiberium(htmlContent,"matias.neri@gmail.com");
     }
-
-
-    public void simpleTextMessage(String htmlContent){
+    public void enviarLiberium(String htmlContent,String para){
 
         new Thread(() -> {
-            String[] para = new String[]{"gonzamasetto21@gmail.com"};
             try {
                 MimeMessage message = emailsender.createMimeMessage();
                 MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
-                helper.setFrom("luismasetto21@gmail.com");
+                helper.setFrom("contacto@liberium.com.ar");
                 helper.setTo(para);
-                helper.setSubject("Has creado una cuenta de prueba en Liberium");
+                helper.setSubject("Han creado una cuenta de prueba en Liberium");
                 helper.setText(htmlContent, true);
+
 
                 MimeBodyPart messageBodyPart = new MimeBodyPart();
                 messageBodyPart.setContent(htmlContent, "text/html");
+
 
                 Multipart multipart = new MimeMultipart();
                 multipart.addBodyPart(messageBodyPart);
@@ -133,32 +128,44 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implement
         }).start();
     }
 
+
+    public void enviarCliente(String htmlContent,String para){
+
+        new Thread(() -> {
+            try {
+                MimeMessage message = emailsender.createMimeMessage();
+                MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
+                helper.setFrom("contacto@liberium.com.ar");
+                helper.setTo(para);
+                helper.setSubject("Has creado una cuenta de prueba en Liberium");
+                helper.setText(htmlContent, true);
+
+
+                MimeBodyPart messageBodyPart = new MimeBodyPart();
+                messageBodyPart.setContent(htmlContent, "text/html");
+
+                //String urlArchivos = "C:/Users/Gonza/OneDrive/Documentos/TALLER PROGRAMACION/Login/src/main/resources/static/img";
+                String urlArchivos = "C:proyectos/liberium/Login/src/main/resources/static/img";
+                String icono = urlArchivos + "/icono.png";
+                MimeBodyPart imagePart = new MimeBodyPart();
+                imagePart.attachFile(icono);
+                imagePart.setContentID("<icono>");
+                imagePart.setDisposition(Part.INLINE);
+
+                Multipart multipart = new MimeMultipart();
+                multipart.addBodyPart(messageBodyPart);
+                multipart.addBodyPart(imagePart);
+                message.setContent(multipart);
+                emailsender.send(message);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
     @Override
     public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
-        Usuario usuario = usuarioRepository.searchByMail(mail);
-
-        if (usuario != null) {
-
-            List<GrantedAuthority> permisos = new ArrayList();
-
-            GrantedAuthority p = new SimpleGrantedAuthority("ROLE_" + usuario.getRol().toString());
-
-            permisos.add(p);
-
-            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-
-            HttpSession session = attr.getRequest().getSession(true);
-
-            session.setAttribute("usuariosession", usuario);
-
-            return new User(usuario.getMail(), usuario.getContrasena(), permisos);
-        } else {
-            return null;
-        }
-    }
-    @Override
-    public List<Usuario> listarUsuarios() {
-        return usuarioRepository.findAll();
+       return null;
     }
 
     @Override

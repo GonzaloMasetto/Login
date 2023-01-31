@@ -31,17 +31,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/*").hasRole("ADMIN")
                 .antMatchers("/css/*", "/js/*", "/img/*", "/**")
                 .permitAll()
-                .and().formLogin()
-                .loginProcessingUrl("/logincheck")
-                .usernameParameter("mail")
-                .passwordParameter("contrasena")
-                .defaultSuccessUrl("/inicio")
-                .permitAll()
-                .and()
-                .logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/inicio")
-                .permitAll()
                 .and().csrf()
                 .disable();
 

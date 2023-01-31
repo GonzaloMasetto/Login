@@ -13,13 +13,9 @@ public interface UsuarioService extends BaseService<Usuario, Long>, UserDetailsS
     void validar(String usuario, String email, String contrasena, String nombre) throws Exception;
 
 
-    List<Usuario> listarUsuarios();
-
-    public void simpleTextMessage(String htmlContent);
-
     void registrar(String usuarioNuevo, String mail, String contrasena, Boolean jefeEquipo, Grupo grupo, String pais, String provincia) throws UsernameNotFoundException;
 
-    public void mensajeCliente(String nombre, Boolean grupo);
     Page<Usuario> searchByGrupo(long grupoid, Pageable pageable) throws Exception;
     public void mensajeLiberium(Grupo grupo,Pageable pageable) throws Exception;
+    public void mensajeCliente(String nombre, Boolean grupo,String para);
 }
