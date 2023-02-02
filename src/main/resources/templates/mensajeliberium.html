@@ -15,6 +15,7 @@
     <th style="padding:5px;border-left:1px solid black;"><em>USUARIO</em></th>
     <th style="padding:5px;border-left:1px solid black;"><em>GMAIL</em></th>
     <th style="padding:5px;border-left:1px solid black;" ><em>JEFE EQUIPO</em></th>
+    <th style="padding:5px;border-left:1px solid black;" ><em>ID EQUIPO</em></th>
   </tr>
   </thead>
   <tbody>
@@ -23,6 +24,7 @@
     <td th:text="${usuario.usuario}" style="padding:5px;border-left:1px solid black;"></td>
     <td th:text="${usuario.mail}" style="padding:5px;border-left:1px solid black;"></td>
     <td th:text="${usuario.jefeEquipo}" style="padding:5px;border-left:1px solid black;"></td>
+    <td th:text="${usuario.grupo.id}" style="padding:5px;border-left:1px solid black;"></td>
 
   </tr>
 

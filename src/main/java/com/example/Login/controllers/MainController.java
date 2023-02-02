@@ -23,7 +23,6 @@ import java.util.stream.Collectors;
 @RequestMapping("/")
 public class MainController {
 
-    private final Logger log = LoggerFactory.getLogger(MainController.class);
     @Autowired
     private UsuarioService usuarioService;
     @GetMapping(value = {"/", "/index"})

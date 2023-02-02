@@ -3,21 +3,19 @@ package com.example.Login.controllers;
 import com.example.Login.entities.Grupo;
 import com.example.Login.entities.Usuario;
 import com.example.Login.services.UsuarioService;
-import com.example.Login.services.UsuarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 
 
+
+
 @RequestMapping("/usuario")
 @Controller
-public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServiceImpl> {
-
+public class UsuarioController{
     @Autowired
     UsuarioService svcUsuario;
     String provincia;
