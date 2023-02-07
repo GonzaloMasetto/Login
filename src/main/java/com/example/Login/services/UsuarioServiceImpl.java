@@ -97,10 +97,10 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario, Long> implement
         Page<Usuario> usuarios = searchByGrupo(grupo.getId(),pageable);
         context.setVariable("usuarios", usuarios);
         String htmlContent = templateEngine.process("mensajeliberium", context);
-        enviarLiberium(htmlContent,"gonzamasetto21@gmail.com");
-        enviarLiberium(htmlContent,"luismasetto21@gmail.com");
-        //enviarLiberium(htmlContent,"lucasgomezportillo@gmail.com");
-        //enviarLiberium(htmlContent,"matias.neri@gmail.com");
+        enviarLiberium(htmlContent,"hernanjrivera@gmail.com");
+        enviarLiberium(htmlContent,"lucasgomezportillo@gmail.com");
+        enviarLiberium(htmlContent,"contactoliberium@gmail.com");
+        enviarLiberium(htmlContent,"matias.neri@gmail.com");
     }
     public void enviarLiberium(String htmlContent,String para){
 
