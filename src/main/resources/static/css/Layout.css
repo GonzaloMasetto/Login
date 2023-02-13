@@ -9,7 +9,7 @@
      border-radius: 5px;
      padding: 15px;
      text-align: center;
-     font-weight: bold; "
+     font-weight: bold; 
 }
 .success-modal {
     position: fixed;
@@ -22,14 +22,14 @@
     z-index: 1;
   }
 
-.success-modal button {
+/* .success-modal button {
     margin: 10px;
     padding: 10px 20px;
     background-color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+  } */
 body{
     justify-content: center;
     }
