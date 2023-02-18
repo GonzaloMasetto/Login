@@ -19,7 +19,7 @@
     <p id="miembros" th:value="${miembros}" th:text="${miembros}"></p>
 </div>
 
-<div class="success-modal modal-lg" style=" max-width:max-content; background-color: white; border: 1px solid;" th:if="${Exito}">
+<div class="success-modal modal-lg cartelExito" th:if="${Exito}">
     <div class="row mt-5 mb-5">
         <div class="col-sm-5 mx-auto text-center">
             <img src="https://liberium.com.ar/wp-content/uploads/2022/06/favi.png" alt="" class="img-fluid">
@@ -27,40 +27,30 @@
     </div>
     <h2 class="text-success text-center">¡Registro exitoso!</h2>
     <p class="text-center">Gracias por registrarte en nuestro sitio web.</p>
-    <div class="row">
-        <div class="col-sm-6">
-            <button class="btn btn-success btn-lg" style="width: 100%;" onclick="location.href='https://liberium.com.ar'">Aceptar</button>
-        </div>
-        <div class="col-sm-6">
-            <button class="btn btn-success  btn-lg" style="width: 100%;" onclick="location.href='/'">Seguir
-                Registrando</button>
-
-        </div>
-    </div>
+    <button class="btn btn-success btn-lg" style="width: 100%;" onclick="location.href='https://liberium.com.ar'">Aceptar</button>
 </div>
 <div style="margin-left: 15px; margin-right:15px">
 
 
     <div class="container">
 
-        <div class="row mt-5 mb-5">
-            <div class="col-sm-5 mx-auto text-center">
-                <img src="https://liberium.com.ar/wp-content/uploads/2022/06/favi.png" style="height: 13rem;" alt="" class="img-fluid">
-            </div>
-        </div>
+
 
                     <form th:action="@{/usuario/registro}" method="post" class="needs-validation" id="formularioRegistro" novalidate>
                         <div class="container">
-                            <div class="row">
-                                <div class="col-sm-10 mx-auto text-center">
-                                    <h1 class="text-success"> ¡Bienvenidos a la App de Liberium!</h1>
+                            <div class="row" style="padding-right: 50px; padding-left: 50px;">
+                                <div class="col-sm-2 order-sm-1 text-center">
+                                    <img src="https://liberium.com.ar/wp-content/uploads/2022/06/favi.png" style="height: 5rem;" alt="" class="img-fluid">
+                                </div>
+                                <div class="col-sm-10 order-sm-2 text-center">
+                                    <h2 class="text-success">¡Bienvenido/a a Liberium Legal!</h2>
                                 </div>
                             </div>
                             <div class="row mb-5">
                                 <div class="col-10 mx-auto">
-                                    <h1 class="modal-title fs-5 mt-5 text-secondary" id="exampleModalLabe">Por favor completá los siguientes datos</h1>
+                                    <h1 class="modal-title fs-5 mt-5 text-secondary" id="exampleModalLabe">Por favor completá los siguientes datos para iniciar la prueba gratuita.</h1>
                                 </div>
-        
+
                             </div>
                         </div>
                         <div th:if="${errorUsuario1}" th:text="${errorUsuario1}" class="errorUsuario">
@@ -72,17 +62,17 @@
                         <!-- Username input -->
                         <div class="container">
                             <div class="form-outline mb-4 col-sm-10 mx-auto">
-                                <label class="form-label text-success" style="font-weight:600" for="usuario">Usuario</label>
+                                <label class="form-label text-success" style="font-weight:600" for="usuario">Nombre usuario</label>
                                 <input type="text" class="form-control form-control-lg" name="usuario" id="usuario" placeholder="usuario" required th:value="${usuarioGuardado1}" />
                                 <div class="invalid-feedback">
                                     Porfavor ingrese el usuario
                                 </div>
                             </div>
-                        <!-- Email input -->
+                         <!-- Email input -->
 
                         <div class="form-outline mb-4  col-sm-10 mx-auto">
 
-                            <label class="form-label text-success" style="font-weight:600" for="mail">Gmail</label>
+                            <label class="form-label text-success" style="font-weight:600">Gmail</label>
                             <div class="input-group">
                                 <input type="text" id="mail1" class="form-control form-control-lg"  name="mail" placeholder="Gmail" aria-label="Recipient's username" aria-describedby="basic-addon2" required th:value="${gmailGuardado1}">
                                 <span class="input-group-text" id="basic-addon2" style="border-radius: 0 5px 4px 0;">@gmail.com</span>
@@ -121,240 +111,27 @@
                             <label for="validationTooltip04" class="form-label text-success" style="font-weight:600">Pais</label>
                             <select class="form-select  form-control-lg" name="pais" id="pais" onchange="accederProvincias()" required>
                                 <option selected disabled value="">Elegir pais</option>
-                                <option value="AF">Afganistán</option>
-                                <option value="AL">Albania</option>
-                                <option value="DE">Alemania</option>
-                                <option value="AD">Andorra</option>
-                                <option value="AO">Angola</option>
-                                <option value="AI">Anguilla</option>
-                                <option value="AQ">Antártida</option>
-                                <option value="AG">Antigua y Barbuda</option>
-                                <option value="AN">Antillas Holandesas</option>
-                                <option value="SA">Arabia Saudí</option>
-                                <option value="DZ">Argelia</option>
-                                <option value="AR">Argentina</option>
-                                <option value="AM">Armenia</option>
-                                <option value="AW">Aruba</option>
-                                <option value="AU">Australia</option>
-                                <option value="AT">Austria</option>
-                                <option value="AZ">Azerbaiyán</option>
-                                <option value="BS">Bahamas</option>
-                                <option value="BH">Bahrein</option>
-                                <option value="BD">Bangladesh</option>
-                                <option value="BB">Barbados</option>
-                                <option value="BE">Bélgica</option>
-                                <option value="BZ">Belice</option>
-                                <option value="BJ">Benin</option>
-                                <option value="BM">Bermudas</option>
-                                <option value="BY">Bielorrusia</option>
-                                <option value="MM">Birmania</option>
-                                <option value="BO">Bolivia</option>
-                                <option value="BA">Bosnia y Herzegovina</option>
-                                <option value="BW">Botswana</option>
-                                <option value="BR">Brasil</option>
-                                <option value="BN">Brunei</option>
-                                <option value="BG">Bulgaria</option>
-                                <option value="BF">Burkina Faso</option>
-                                <option value="BI">Burundi</option>
-                                <option value="BT">Bután</option>
-                                <option value="CV">Cabo Verde</option>
-                                <option value="KH">Camboya</option>
-                                <option value="CM">Camerún</option>
-                                <option value="CA">Canadá</option>
-                                <option value="TD">Chad</option>
-                                <option value="CL">Chile</option>
-                                <option value="CN">China</option>
-                                <option value="CY">Chipre</option>
-                                <option value="VA">Ciudad del Vaticano (Santa Sede)</option>
-                                <option value="CO">Colombia</option>
-                                <option value="KM">Comores</option>
-                                <option value="CG">Congo</option>
-                                <option value="CD">Congo, República Democrática del</option>
-                                <option value="KR">Corea</option>
-                                <option value="KP">Corea del Norte</option>
-                                <option value="CI">Costa de Marfíl</option>
-                                <option value="CR">Costa Rica</option>
-                                <option value="HR">Croacia (Hrvatska)</option>
-                                <option value="CU">Cuba</option>
-                                <option value="DK">Dinamarca</option>
-                                <option value="DJ">Djibouti</option>
-                                <option value="DM">Dominica</option>
-                                <option value="EC">Ecuador</option>
-                                <option value="EG">Egipto</option>
-                                <option value="SV">El Salvador</option>
-                                <option value="AE">Emiratos Árabes Unidos</option>
-                                <option value="ER">Eritrea</option>
-                                <option value="SI">Eslovenia</option>
-                                <option value="ES">España</option>
-                                <option value="US">Estados Unidos</option>
-                                <option value="EE">Estonia</option>
-                                <option value="ET">Etiopía</option>
-                                <option value="FJ">Fiji</option>
-                                <option value="PH">Filipinas</option>
-                                <option value="FI">Finlandia</option>
-                                <option value="FR">Francia</option>
-                                <option value="GA">Gabón</option>
-                                <option value="GM">Gambia</option>
-                                <option value="GE">Georgia</option>
-                                <option value="GH">Ghana</option>
-                                <option value="GI">Gibraltar</option>
-                                <option value="GD">Granada</option>
-                                <option value="GR">Grecia</option>
-                                <option value="GL">Groenlandia</option>
-                                <option value="GP">Guadalupe</option>
-                                <option value="GU">Guam</option>
-                                <option value="GT">Guatemala</option>
-                                <option value="GY">Guayana</option>
-                                <option value="GF">Guayana Francesa</option>
-                                <option value="GN">Guinea</option>
-                                <option value="GQ">Guinea Ecuatorial</option>
-                                <option value="GW">Guinea-Bissau</option>
-                                <option value="HT">Haití</option>
-                                <option value="HN">Honduras</option>
-                                <option value="HU">Hungría</option>
-                                <option value="IN">India</option>
-                                <option value="ID">Indonesia</option>
-                                <option value="IQ">Irak</option>
-                                <option value="IR">Irán</option>
-                                <option value="IE">Irlanda</option>
-                                <option value="BV">Isla Bouvet</option>
-                                <option value="CX">Isla de Christmas</option>
-                                <option value="IS">Islandia</option>
-                                <option value="KY">Islas Caimán</option>
-                                <option value="CK">Islas Cook</option>
-                                <option value="CC">Islas de Cocos o Keeling</option>
-                                <option value="FO">Islas Faroe</option>
-                                <option value="HM">Islas Heard y McDonald</option>
-                                <option value="FK">Islas Malvinas</option>
-                                <option value="MP">Islas Marianas del Norte</option>
-                                <option value="MH">Islas Marshall</option>
-                                <option value="UM">Islas menores de Estados Unidos</option>
-                                <option value="PW">Islas Palau</option>
-                                <option value="SB">Islas Salomón</option>
-                                <option value="SJ">Islas Svalbard y Jan Mayen</option>
-                                <option value="TK">Islas Tokelau</option>
-                                <option value="TC">Islas Turks y Caicos</option>
-                                <option value="VI">Islas Vírgenes (EEUU)</option>
-                                <option value="VG">Islas Vírgenes (Reino Unido)</option>
-                                <option value="WF">Islas Wallis y Futuna</option>
-                                <option value="IL">Israel</option>
-                                <option value="IT">Italia</option>
-                                <option value="JM">Jamaica</option>
-                                <option value="JP">Japón</option>
-                                <option value="JO">Jordania</option>
-                                <option value="KZ">Kazajistán</option>
-                                <option value="KE">Kenia</option>
-                                <option value="KG">Kirguizistán</option>
-                                <option value="KI">Kiribati</option>
-                                <option value="KW">Kuwait</option>
-                                <option value="LA">Laos</option>
-                                <option value="LS">Lesotho</option>
-                                <option value="LV">Letonia</option>
-                                <option value="LB">Líbano</option>
-                                <option value="LR">Liberia</option>
-                                <option value="LY">Libia</option>
-                                <option value="LI">Liechtenstein</option>
-                                <option value="LT">Lituania</option>
-                                <option value="LU">Luxemburgo</option>
-                                <option value="MK">Macedonia</option>
-                                <option value="MG">Madagascar</option>
-                                <option value="MY">Malasia</option>
-                                <option value="MW">Malawi</option>
-                                <option value="MV">Maldivas</option>
-                                <option value="ML">Malí</option>
-                                <option value="MT">Malta</option>
-                                <option value="MA">Marruecos</option>
-                                <option value="MQ">Martinica</option>
-                                <option value="MU">Mauricio</option>
-                                <option value="MR">Mauritania</option>
-                                <option value="YT">Mayotte</option>
-                                <option value="MX">México</option>
-                                <option value="FM">Micronesia</option>
-                                <option value="MD">Moldavia</option>
-                                <option value="MC">Mónaco</option>
-                                <option value="MN">Mongolia</option>
-                                <option value="MS">Montserrat</option>
-                                <option value="MZ">Mozambique</option>
-                                <option value="NA">Namibia</option>
-                                <option value="NR">Nauru</option>
-                                <option value="NP">Nepal</option>
-                                <option value="NI">Nicaragua</option>
-                                <option value="NE">Níger</option>
-                                <option value="NG">Nigeria</option>
-                                <option value="NU">Niue</option>
-                                <option value="NF">Norfolk</option>
-                                <option value="NO">Noruega</option>
-                                <option value="NC">Nueva Caledonia</option>
-                                <option value="NZ">Nueva Zelanda</option>
-                                <option value="OM">Omán</option>
-                                <option value="NL">Países Bajos</option>
-                                <option value="PA">Panamá</option>
-                                <option value="PG">Papúa Nueva Guinea</option>
-                                <option value="PK">Paquistán</option>
-                                <option value="PY">Paraguay</option>
-                                <option value="PE">Perú</option>
-                                <option value="PN">Pitcairn</option>
-                                <option value="PF">Polinesia Francesa</option>
-                                <option value="PL">Polonia</option>
-                                <option value="PT">Portugal</option>
-                                <option value="PR">Puerto Rico</option>
-                                <option value="QA">Qatar</option>
-                                <option value="UK">Reino Unido</option>
-                                <option value="CF">República Centroafricana</option>
-                                <option value="CZ">República Checa</option>
-                                <option value="ZA">República de Sudáfrica</option>
-                                <option value="DO">República Dominicana</option>
-                                <option value="SK">República Eslovaca</option>
-                                <option value="RE">Reunión</option>
-                                <option value="RW">Ruanda</option>
-                                <option value="RO">Rumania</option>
-                                <option value="RU">Rusia</option>
-                                <option value="EH">Sahara Occidental</option>
-                                <option value="KN">Saint Kitts y Nevis</option>
-                                <option value="WS">Samoa</option>
-                                <option value="AS">Samoa Americana</option>
-                                <option value="SM">San Marino</option>
-                                <option value="VC">San Vicente y Granadinas</option>
-                                <option value="SH">Santa Helena</option>
-                                <option value="LC">Santa Lucía</option>
-                                <option value="ST">Santo Tomé y Príncipe</option>
-                                <option value="SN">Senegal</option>
-                                <option value="SC">Seychelles</option>
-                                <option value="SL">Sierra Leona</option>
-                                <option value="SG">Singapur</option>
-                                <option value="SY">Siria</option>
-                                <option value="SO">Somalia</option>
-                                <option value="LK">Sri Lanka</option>
-                                <option value="PM">St Pierre y Miquelon</option>
-                                <option value="SZ">Suazilandia</option>
-                                <option value="SD">Sudán</option>
-                                <option value="SE">Suecia</option>
-                                <option value="CH">Suiza</option>
-                                <option value="SR">Surinam</option>
-                                <option value="TH">Tailandia</option>
-                                <option value="TW">Taiwán</option>
-                                <option value="TZ">Tanzania</option>
-                                <option value="TJ">Tayikistán</option>
-                                <option value="TF">Territorios franceses del Sur</option>
-                                <option value="TP">Timor Oriental</option>
-                                <option value="TG">Togo</option>
-                                <option value="TO">Tonga</option>
-                                <option value="TT">Trinidad y Tobago</option>
-                                <option value="TN">Túnez</option>
-                                <option value="TM">Turkmenistán</option>
-                                <option value="TR">Turquía</option>
-                                <option value="TV">Tuvalu</option>
-                                <option value="UA">Ucrania</option>
-                                <option value="UG">Uganda</option>
-                                <option value="UY">Uruguay</option>
-                                <option value="UZ">Uzbekistán</option>
-                                <option value="VU">Vanuatu</option>
-                                <option value="VE">Venezuela</option>
-                                <option value="VN">Vietnam</option>
-                                <option value="YE">Yemen</option>
-                                <option value="YU">Yugoslavia</option>
-                                <option value="ZM">Zambia</option>
-                                <option value="ZW">Zimbabue</option>
+                                <option value="Argentina">Argentina</option>
+                                <option value="Bolivia">Bolivia</option>
+                                <option value="Brasil">Brasil</option>
+                                <option value="Chile">Chile</option>
+                                <option value="Colombia">Colombia</option>
+                                <option value="Costa Rica">Costa Rica</option>
+                                <option value="Cuba">Cuba</option>
+                                <option value="Ecuador">Ecuador</option>
+                                <option value="El Salvador">El Salvador</option>
+                                <option value="España">España</option>
+                                <option value="Guatemala">Guatemala</option>
+                                <option value="Honduras">Honduras</option>
+                                <option value="México">México</option>
+                                <option value="Nicaragua">Nicaragua</option>
+                                <option value="Panamá">Panamá</option>
+                                <option value="Paraguay">Paraguay</option>
+                                <option value="Perú">Perú</option>
+                                <option value="Puerto Rico">Puerto Rico</option>
+                                <option value="República Dominicana">República Dominicana</option>
+                                <option value="Uruguay">Uruguay</option>
+                                <option value="Venezuela">Venezuela</option>
                             </select>
                             <div class="invalid-feedback">
                                 Porfavor ingrese el Pais
@@ -418,7 +195,7 @@
                         </div>
                         <!-- Provincia input -->
                         <div class="form-outline mb-4 col-sm-10 mx-auto" id="divPais3" style="display: none; ">
-                            <label class="form-label text-success" style="font-weight:600" for="provincia">Provincia/Zona</label>
+                            <label class="form-label text-success" style="font-weight:600">Provincia/Zona</label>
                             <input type="text" class="form-control form-control-lg" name="provinciaOTRO" id="pais3" placeholder="Región" required/>
 
                             <div class="invalid-feedback">
@@ -427,7 +204,7 @@
                         </div>
                         <div style="margin-top: 20px;" class=" col-sm-10 mx-auto">
                             <label for="validationTooltip04" class="form-label text-success" style="font-weight:600">Miembros del Equipo</label>
-                            <select class="form-select form-control-lg" id="validationTooltip04"  name="miembros" onchange="accederMiembros()" required>
+                            <select class="form-select form-control-lg" id="validationTooltip04"  name="miembros" onchange="accederMiembros()" required style="margin-bottom: 10px;">
                                 <option value="">Selecciona la cantidad de miembros</option>
                                 <option value="one">1</option>
                                 <option value="two">2</option>
@@ -439,7 +216,6 @@
                                 <option value="eight">8</option>
                                 <option value="nine">9</option>
                             </select>
-                            <label class="form-label"></label>
                             <div class="invalid-feedback" style="margin-top: -20px; margin-bottom: 20px;">
                                 Porfavor seleccione la cantidad de miembros
                             </div>
@@ -447,15 +223,15 @@
 
                                 <!-- Username input 1 -->
                                 <div class="form-outline mb-4 " style="margin-top: -25px;">
-                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;">Usuario Miembro 1</label>
-                                    <input type="text" id="us-one" class="form-control form-control-lg" placeholder="Usuario Miembro 1" disabled/>
+                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;">Nombre Usuario Miembro 1</label>
+                                    <input type="text" id="us-one" class="form-control form-control-lg" placeholder="Nombre Usuario Miembro 1" disabled/>
                                     <div class="invalid-feedback">
                                         Porfavor ingrese el usuario
                                     </div>
                                 </div>
                                 <!-- Email input 1 -->
                                 <div class="form-outline mb-4">
-                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" for="mail">Gmail Miembro 1</label>
+                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" >Gmail Miembro 1</label>
 
                                     <div class="input-group">
                                         <input type="text" id="em-one" class="form-control form-control-lg" placeholder="Gmail Miembro 1" aria-label="Recipient's username" aria-describedby="basic-addon2" disabled>
@@ -484,7 +260,7 @@
                                 <div class="form-outline mb-4 " >
                                     <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" >Usuario Miembro 2</label>
 
-                                    <input type="text" name="usuariodos" id="usuario2" placeholder="Usuario Miembro 2" class="form-control form-control-lg" th:value="${usuarioGuardado2}"/>
+                                    <input type="text" name="usuariodos" id="usuario2" placeholder="Nombre Usuario Miembro 2" class="form-control form-control-lg" th:value="${usuarioGuardado2}"/>
                                     <div class="invalid-feedback">
                                         Porfavor ingrese el usuario
                                     </div>
@@ -493,7 +269,7 @@
                                 <!-- Email input 2 -->
 
                                 <div class="form-outline mb-4">
-                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" for="mail">Gmail Miembro 2</label>
+                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;">Gmail Miembro 2</label>
 
                                     <div class="input-group">
                                         <input type="text" id="mail2" class="form-control form-control-lg" name="maildos" placeholder="Gmail Miembro 2" aria-label="Recipient's username" aria-describedby="basic-addon2" required th:value="${gmailGuardado2}">
@@ -515,9 +291,9 @@
                             <div id="3" style="display: none; width: 100%">
                                 <!-- Username input 3 -->
                                 <div class="form-outline mb-4 " >
-                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;">Usuario Miembro 3</label>
+                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;">Nombre Usuario Miembro 3</label>
 
-                                    <input type="text" name="usuariotres" id="usuario3" placeholder="Usuario Miembro 3" class="form-control form-control-lg" th:value="${usuarioGuardado3}"/>
+                                    <input type="text" name="usuariotres" id="usuario3" placeholder="Nombre Usuario Miembro 3" class="form-control form-control-lg" th:value="${usuarioGuardado3}"/>
                                     <div class="invalid-feedback">
                                         Porfavor ingrese el usuario
                                     </div>
@@ -525,7 +301,7 @@
 
                                 <!-- Email input 3 -->
                                 <div class="form-outline mb-4 ">
-                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" for="mail">Gmail Miembro 3</label>
+                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" >Gmail Miembro 3</label>
 
                                     <div class="input-group">
                                         <input type="text" id="mail3" class="form-control form-control-lg" name="mailtres" placeholder="Gmail Miembro 3" aria-label="Recipient's username" aria-describedby="basic-addon2" required th:value="${usuarioGuardado3}">
@@ -549,7 +325,7 @@
                                 <div class="form-outline mb-4">
                                     <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;">Usuario Miembro 4</label>
 
-                                    <input type="text" class="form-control form-control-lg" name="usuariocuatro"  id="usuario4"placeholder="Usuario Miembro 4"/>
+                                    <input type="text" class="form-control form-control-lg" name="usuariocuatro"  id="usuario4"placeholder="Nombre Usuario Miembro 4"/>
                                     <div class="invalid-feedback">
                                         Porfavor ingrese el usuario
                                     </div>
@@ -557,7 +333,7 @@
 
                                 <!-- Email input 4 -->
                                 <div class="form-outline mb-4 ">
-                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" for="mail">Gmail Miembro 4</label>
+                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;">Gmail Miembro 4</label>
 
                                     <div class="input-group">
                                         <input type="text" id="mail4" class="form-control form-control-lg" name="mailcuatro" placeholder="Gmail Miembro 4" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
@@ -580,9 +356,9 @@
                             <div id="5" style="display: none; width: 100%">
                                 <!-- Username input 5 -->
                                 <div class="form-outline mb-4 ">
-                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;"/>Usuario Miembro 5 </label>
+                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;"/>Nombre Usuario Miembro 5 </label>
 
-                                    <input type="text" class="form-control form-control-lg" name="usuariocinco" id="usuario5" placeholder="Usuario Miembro 5"/>
+                                    <input type="text" class="form-control form-control-lg" name="usuariocinco" id="usuario5" placeholder="Nombre Usuario Miembro 5"/>
                                     <div class="invalid-feedback">
                                         Porfavor ingrese el usuario
                                     </div>
@@ -590,7 +366,7 @@
 
                                 <!-- Email input 5 -->
                                 <div class="form-outline mb-4 ">
-                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" for="mail">Gmail Miembro 5</label>
+                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;">Gmail Miembro 5</label>
 
                                     <div class="input-group">
                                         <input type="text" id="mail5" class="form-control form-control-lg" name="mailcinco" placeholder="Gmail Miembro 5" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
@@ -612,9 +388,9 @@
                             <div id="6" style="display: none; width: 100%">
                                 <!-- Username input 6 -->
                                 <div class="form-outline mb-4" >
-                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" >Usuario Miembro 6</label>
+                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" >Nombre Usuario Miembro 6</label>
 
-                                    <input type="text" name="usuarioseis" id="usuario6" placeholder="Usuario Miembro 6" class="form-control form-control-lg" />
+                                    <input type="text" name="usuarioseis" id="usuario6" placeholder="Nombre Usuario Miembro 6" class="form-control form-control-lg" />
                                     <div class="invalid-feedback">
                                         Porfavor ingrese el usuario
                                     </div>
@@ -622,7 +398,7 @@
 
                                 <!-- Email input 6 -->
                                 <div class="form-outline mb-4">
-                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" for="mail">Gmail Miembro 6</label>
+                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;">Gmail Miembro 6</label>
 
                                     <div class="input-group">
                                         <input type="text" id="mail6" class="form-control form-control-lg" name="mailseis" placeholder="Gmail Miembro 6" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
@@ -646,7 +422,7 @@
                                 <div class="form-outline mb-4 ">
                                     <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" >Usuario Miembro 7</label>
 
-                                    <input type="text" name="usuariosiete" id="usuario7" placeholder="Usuario Miembro 7" class="form-control form-control-lg" />
+                                    <input type="text" name="usuariosiete" id="usuario7" placeholder="Nombre Usuario Miembro 7" class="form-control form-control-lg" />
                                     <div class="invalid-feedback">
                                         Porfavor ingrese el usuario
                                     </div>
@@ -654,7 +430,7 @@
 
                                 <!-- Email input 7 -->
                                 <div class="form-outline mb-4">
-                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" for="mail">Gmail Miembro 7</label>
+                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;">Gmail Miembro 7</label>
 
                                     <div class="input-group">
 
@@ -677,9 +453,9 @@
                             <div id="8" style="display: none; width: 100%">
                                 <!-- Username input 8 -->
                                 <div class="form-outline mb-4 ">
-                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" >Usuario Miembro 8</label>
+                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" >Nombre Usuario Miembro 8</label>
 
-                                    <input type="text" name="usuarioocho" id="usuario8" placeholder="Usuario Miembro 8"class="form-control form-control-lg" />
+                                    <input type="text" name="usuarioocho" id="usuario8" placeholder="Nombre Usuario Miembro 8"class="form-control form-control-lg" />
                                     <div class="invalid-feedback">
                                         Porfavor ingrese el usuario
                                     </div>
@@ -687,7 +463,7 @@
 
                                 <!-- Email input 8 -->
                                 <div class="form-outline mb-4 ">
-                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" for="mail">Gmail Miembro 8</label>
+                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;">Gmail Miembro 8</label>
 
                                     <div class="input-group">
 
@@ -709,10 +485,10 @@
                             </div>
                             <div id="9" style="display: none; width: 100%">
                                 <!-- Username input 9 -->
-                                <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" >Usuario Miembro 9</label>
+                                <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" >Nombre Usuario Miembro 9</label>
 
                                 <div class="form-outline mb-4 " >
-                                    <input type="text" name="usuarionueve" id="usuario9" placeholder="Usuario Miembro 9" class="form-control form-control-lg" />
+                                    <input type="text" name="usuarionueve" id="usuario9" placeholder="Nombre Usuario Miembro 9" class="form-control form-control-lg" />
                                     <div class="invalid-feedback">
                                         Porfavor ingrese el usuario
                                     </div>
@@ -720,7 +496,7 @@
 
                                 <!-- Email input 9 -->
                                 <div class="form-outline mb-4 ">
-                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;" for="mail">Gmail Miembro 9 </label>
+                                    <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;">Gmail Miembro 9 </label>
                                     <div class="input-group">
                                         <input type="text" id="mail9" class="form-control form-control-lg" name="mailnueve" placeholder="Gmail Miembro 9" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
                                         <span class="input-group-text" id="basic-addon2">@gmail.com</span>
@@ -756,8 +532,8 @@
                          </div>
                         <button class="w-100 mb-2 btn btn-lg rounded-3 btn-success" type="submit" style="margin-top: 20px;">Registrarse</button>
                     </form>
+        </div>
 </div>
-
 <script th:inline="javascript">
 
 var input = document.getElementById("contrasena2")
@@ -831,7 +607,8 @@ function validarGmail() {
 
     if(expreg.test(gmail)){
       errorGmail.style.display ="inline-block";
-
+      errorGmail.focus();
+      errorGmail.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
     else{
       errorGmail.style.display ="none";
@@ -897,12 +674,12 @@ function accederProvincias(){
     var pais = document.getElementById("pais").value;
 
     iniciarValidacionProvincias();
-    if (pais == "AR") {
+    if (pais == "Argentina") {
 
             document.getElementById("divPais1").style.display = "block";
             document.getElementById("pais1").required = 'true';
 
-    }else if (pais == "CL"){
+    }else if (pais == "Chile"){
             document.getElementById("divPais2").style.display = "block";
             document.getElementById("pais2").required = 'true';
     }else{

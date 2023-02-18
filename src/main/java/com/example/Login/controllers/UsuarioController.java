@@ -43,11 +43,21 @@ public class UsuarioController{
                            ModelMap modelo, Pageable pageable){
 
         try {
+            mail = mail.toLowerCase();
+            maildos = maildos.toLowerCase();
+            mailtres = mailtres.toLowerCase();
+            mailcuatro = mailcuatro.toLowerCase();
+            mailcinco = mailcinco.toLowerCase();
+            mailseis = mailseis.toLowerCase();
+            mailsiete = mailsiete.toLowerCase();
+            mailocho = mailocho.toLowerCase();
+            mailnueve = mailnueve.toLowerCase();
+
             Grupo grupo = new Grupo();
 
-            if (pais.equals("AR")){
+            if (pais.equals("Argentina")){
                 this.provincia = provinciaAR;
-            } else if (pais.equals("CL")) {
+            } else if (pais.equals("Chile")) {
                 this.provincia = provinciaCH;
             }else {
                 this.provincia = provinciaOTRO;

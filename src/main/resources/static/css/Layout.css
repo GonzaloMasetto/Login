@@ -64,3 +64,22 @@ form{
         width: 100%;
     }
 }
+.invalid-feedback{
+margin-top: 15px !important;
+}
+
+@media screen and (min-width:450px){
+    .cartelExito{
+        max-width:max-content;
+        background-color: white;
+        border: 1px solid;
+    }
+}
+@media screen and (max-width:450px){
+    .cartelExito{
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        border: 1px solid;
+    }
+}

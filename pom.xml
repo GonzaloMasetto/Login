@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>Login</artifactId>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Login</name>
-	<packaging>war</packaging>
 	<description>Login to add to the program</description>
 	<properties>
 		<java.version>11</java.version>
