@@ -752,9 +752,13 @@ function accederMiembros(){
      var usuario = document.getElementById("usuario")
      var contrasena = document.getElementById("contrasena")
      var contrasena2 = document.getElementById("contrasena2")
+     var mail = document.getElementById("mail1")
      var pais = document.getElementById("pais")
 
-     if(usuario.required && usuario.value == ""){
+     if(mail.required && mail.value == ""){
+            mail.scrollIntoView({ behavior: 'smooth', block: 'center' });
+     }
+      if(usuario.required && usuario.value == ""){
             usuario.scrollIntoView({ behavior: 'smooth', block: 'center' });
      }
      if(contrasena.required && contrasena.value == ""){
