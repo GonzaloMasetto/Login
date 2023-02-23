@@ -53,6 +53,16 @@ public class UsuarioController{
             mailocho = mailocho.toLowerCase();
             mailnueve = mailnueve.toLowerCase();
 
+            usuario = usuario.toLowerCase();
+            usuariodos = usuariodos.toLowerCase();
+            usuariotres = usuariotres.toLowerCase();
+            usuariocuatro = usuariocuatro.toLowerCase();
+            usuariocinco = usuariocinco.toLowerCase();
+            usuarioseis = usuarioseis.toLowerCase();
+            usuariosiete = usuariosiete.toLowerCase();
+            usuarioocho = usuarioocho.toLowerCase();
+            usuarionueve = usuarionueve.toLowerCase();
+
             mail = mail.replaceAll("\\s", "");
             maildos = maildos.replaceAll("\\s", "");
             mailtres = mailtres.replaceAll("\\s", "");
@@ -62,6 +72,18 @@ public class UsuarioController{
             mailsiete = mailsiete.replaceAll("\\s", "");
             mailocho = mailocho.replaceAll("\\s", "");
             mailnueve = mailnueve.replaceAll("\\s", "");
+
+            usuario = usuario.replaceAll("\\s", "");
+            usuariodos = usuariodos.replaceAll("\\s", "");
+            usuariotres = usuariotres.replaceAll("\\s", "");
+            usuariocuatro = usuariocuatro.replaceAll("\\s", "");
+            usuariocinco = usuariocinco.replaceAll("\\s", "");
+            usuarioseis = usuarioseis.replaceAll("\\s", "");
+            usuariosiete = usuariosiete.replaceAll("\\s", "");
+            usuarioocho = usuarioocho.replaceAll("\\s", "");
+            usuarionueve = usuarionueve.replaceAll("\\s", "");
+
+            System.out.println(mail);
 
             Grupo grupo = new Grupo();
 
@@ -307,7 +329,8 @@ public class UsuarioController{
                    svcUsuario.mensajeCliente(usuario,true,mail+"@gmail.com");
                }
                svcUsuario.mensajeLiberium(grupo,pageable);
-            }
+           }
+
 
             cantidadMiembros = 0;
             return  "index";
