@@ -64,9 +64,6 @@ form{
         width: 100%;
     }
 }
-.invalid-feedback{
-margin-top: 15px !important;
-}
 
 @media screen and (min-width:450px){
     .cartelExito{

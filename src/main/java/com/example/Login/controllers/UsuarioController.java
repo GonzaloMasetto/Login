@@ -53,6 +53,16 @@ public class UsuarioController{
             mailocho = mailocho.toLowerCase();
             mailnueve = mailnueve.toLowerCase();
 
+            mail = mail.replaceAll("\\s", "");
+            maildos = maildos.replaceAll("\\s", "");
+            mailtres = mailtres.replaceAll("\\s", "");
+            mailcuatro = mailcuatro.replaceAll("\\s", "");
+            mailcinco = mailcinco.replaceAll("\\s", "");
+            mailseis = mailseis.replaceAll("\\s", "");
+            mailsiete = mailsiete.replaceAll("\\s", "");
+            mailocho = mailocho.replaceAll("\\s", "");
+            mailnueve = mailnueve.replaceAll("\\s", "");
+
             Grupo grupo = new Grupo();
 
             if (pais.equals("Argentina")){
@@ -290,16 +300,14 @@ public class UsuarioController{
                 if (exitoRegistro >= 9){
                     svcUsuario.registrar(usuarionueve, mailnueve, contrasena, false, grupo, pais, provincia);
                 }
+               if (usuariodos.equals("")){
+                   svcUsuario.mensajeCliente(usuario,false,mail+"@gmail.com");
+
+               }else{
+                   svcUsuario.mensajeCliente(usuario,true,mail+"@gmail.com");
+               }
+               svcUsuario.mensajeLiberium(grupo,pageable);
             }
-
-
-            if (usuariodos.equals("")){
-                svcUsuario.mensajeCliente(usuario,false,mail+"@gmail.com");
-
-            }else{
-                svcUsuario.mensajeCliente(usuario,true,mail+"@gmail.com");
-            }
-            svcUsuario.mensajeLiberium(grupo,pageable);
 
             cantidadMiembros = 0;
             return  "index";

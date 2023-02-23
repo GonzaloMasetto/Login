@@ -39,10 +39,10 @@
                     <form th:action="@{/usuario/registro}" method="post" class="needs-validation" id="formularioRegistro" novalidate>
                         <div class="container">
                             <div class="row" style="padding-right: 50px; padding-left: 50px;">
-                                <div class="col-sm-2 order-sm-1 text-center">
+                                <div class="col-sm-3 order-sm-1 text-center">
                                     <img src="https://liberium.com.ar/wp-content/uploads/2022/06/favi.png" style="height: 5rem;" alt="" class="img-fluid">
                                 </div>
-                                <div class="col-sm-10 order-sm-2 text-center">
+                                <div class="col-sm-9 order-sm-2 text-center">
                                     <h2 class="text-success">¡Bienvenido/a a Liberium Legal!</h2>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                                 <label class="form-label text-success" style="font-weight:600" for="usuario">Nombre usuario</label>
                                 <input type="text" class="form-control form-control-lg" name="usuario" id="usuario" placeholder="usuario" required th:value="${usuarioGuardado1}" />
                                 <div class="invalid-feedback">
-                                    Porfavor ingrese el usuario
+                                    Por favor ingrese el usuario
                                 </div>
                             </div>
                          <!-- Email input -->
@@ -77,12 +77,12 @@
                                 <input type="text" id="mail1" class="form-control form-control-lg"  name="mail" placeholder="Gmail" aria-label="Recipient's username" aria-describedby="basic-addon2" required th:value="${gmailGuardado1}">
                                 <span class="input-group-text" id="basic-addon2" style="border-radius: 0 5px 4px 0;">@gmail.com</span>
                                 <div class="invalid-feedback">
-                                    Porfavor ingrese el Gmail
+                                    Por favor ingrese el Gmail
                                 </div>
                             </div>
 
                             <br>
-                            <p id="aparecerErrorGmail1" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                            <p id="aparecerErrorGmail1" style="display: none; color: red">Por favor ingrese un Gmail sin incluir el "@gmail.com"</p>
                         </div>
 
                         <!-- Password input -->
@@ -91,7 +91,7 @@
                             <input type="password" id="contrasena"  class="form-control  form-control-lg" name="contrasena" placeholder="contraseña" required/>
 
                             <div class="invalid-feedback">
-                                Porfavor ingrese la contraseña
+                                Por favor ingrese la contraseña
                             </div>
                         </div>
                         <!-- Password input -->
@@ -100,7 +100,7 @@
                             <input type="password" id="contrasena2"  class="form-control  form-control-lg" name="contrasena2" placeholder="contraseña" required/>
 
                             <div class="invalid-feedback">
-                                Porfavor ingrese la contraseña
+                                Por favor ingrese la contraseña
                             </div>
                             <br>
                             <p id="aparecerError" style="display: none; color: red">Ambas contraseñas deben ser iguales.</p>
@@ -134,7 +134,7 @@
                                 <option value="Venezuela">Venezuela</option>
                             </select>
                             <div class="invalid-feedback">
-                                Porfavor ingrese el Pais
+                                Por favor ingrese el Pais
                             </div>
                         </div>
                         <div class="form-outline mb-4 col-sm-10 mx-auto" id="divPais1" style="display: none; ">
@@ -166,7 +166,7 @@
                                 <option value="Tucumán"> Tucumán</option>
                             </select>
                             <div class="invalid-feedback">
-                                Porfavor ingrese la Provincia/Zona
+                                Por favor ingrese la Provincia/Zona
                             </div>
                         </div>
                         <div class="form-outline mb-4 col-sm-10 mx-auto" id="divPais2" style="display: none;">
@@ -190,7 +190,7 @@
                                 <option value="PuntaArenas"> Punta Arenas</option>
                             </select>
                             <div class="invalid-feedback">
-                                Porfavor ingrese la Provincia/Zona
+                                Por favor ingrese la Provincia/Zona
                             </div>
                         </div>
                         <!-- Provincia input -->
@@ -199,7 +199,7 @@
                             <input type="text" class="form-control form-control-lg" name="provinciaOTRO" id="pais3" placeholder="Región" required/>
 
                             <div class="invalid-feedback">
-                                Porfavor ingrese la Provincia/Zona
+                                Por favor ingrese la Provincia/Zona
                             </div>
                         </div>
                         <div style="margin-top: 20px;" class=" col-sm-10 mx-auto">
@@ -216,7 +216,7 @@
                                 <option value="eight">8</option>
                                 <option value="nine">9</option>
                             </select>
-                            <div class="invalid-feedback" style="margin-top: -20px; margin-bottom: 20px;">
+                            <div class="invalid-feedback" style="margin-bottom: 20px;">
                                 Porfavor seleccione la cantidad de miembros
                             </div>
                             <div id="1" style="display: none; margin-top: 35px; width: 100%;">
@@ -226,7 +226,7 @@
                                     <label class="form-label text-secondary" style="font-weight: 600; padding-left: 1rem;">Nombre Usuario Miembro 1</label>
                                     <input type="text" id="us-one" class="form-control form-control-lg" placeholder="Nombre Usuario Miembro 1" disabled/>
                                     <div class="invalid-feedback">
-                                        Porfavor ingrese el usuario
+                                        Por favor ingrese el usuario
                                     </div>
                                 </div>
                                 <!-- Email input 1 -->
@@ -237,11 +237,11 @@
                                         <input type="text" id="em-one" class="form-control form-control-lg" placeholder="Gmail Miembro 1" aria-label="Recipient's username" aria-describedby="basic-addon2" disabled>
                                         <span class="input-group-text" id="basic-addon2">@gmail.com</span>
                                         <div class="invalid-feedback">
-                                            Porfavor ingrese el Gmail
+                                            Por favor ingrese el Gmail
                                         </div>
                                     </div>
                                     <br>
-                                    <p id="aparecerErrorGmail" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                    <p id="aparecerErrorGmail" style="display: none; color: red">Por favor ingrese un Gmail sin incluir el "@gmail.com"</p>
                                     <div class="row">
                                         <div class="col-sm-8 mx-auto">
                                             <hr style=" margin: 0.5rem;">
@@ -262,7 +262,7 @@
 
                                     <input type="text" name="usuariodos" id="usuario2" placeholder="Nombre Usuario Miembro 2" class="form-control form-control-lg" th:value="${usuarioGuardado2}"/>
                                     <div class="invalid-feedback">
-                                        Porfavor ingrese el usuario
+                                        Por favor ingrese el usuario
                                     </div>
                                 </div>
 
@@ -275,11 +275,11 @@
                                         <input type="text" id="mail2" class="form-control form-control-lg" name="maildos" placeholder="Gmail Miembro 2" aria-label="Recipient's username" aria-describedby="basic-addon2" required th:value="${gmailGuardado2}">
                                         <span class="input-group-text" id="basic-addon2">@gmail.com</span>
                                         <div class="invalid-feedback">
-                                            Porfavor ingrese el Gmail
+                                            Por favor ingrese el Gmail
                                         </div>
                                     </div>
                                     <br>
-                                    <p id="aparecerErrorGmail2" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                    <p id="aparecerErrorGmail2" style="display: none; color: red">Por favor ingrese un Gmail sin incluir el "@gmail.com"</p>
                                     <div class="row">
                                         <div class="col-sm-8 mx-auto">
                                             <hr style=" margin: 0.5rem;">
@@ -295,7 +295,7 @@
 
                                     <input type="text" name="usuariotres" id="usuario3" placeholder="Nombre Usuario Miembro 3" class="form-control form-control-lg" th:value="${usuarioGuardado3}"/>
                                     <div class="invalid-feedback">
-                                        Porfavor ingrese el usuario
+                                        Por favor ingrese el usuario
                                     </div>
                                 </div>
 
@@ -307,11 +307,11 @@
                                         <input type="text" id="mail3" class="form-control form-control-lg" name="mailtres" placeholder="Gmail Miembro 3" aria-label="Recipient's username" aria-describedby="basic-addon2" required th:value="${usuarioGuardado3}">
                                         <span class="input-group-text" id="basic-addon2">@gmail.com</span>
                                         <div class="invalid-feedback">
-                                            Porfavor ingrese el Gmail
+                                            Por favor ingrese el Gmail
                                         </div>
                                     </div>
                                     <br>
-                                    <p id="aparecerErrorGmail3" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                    <p id="aparecerErrorGmail3" style="display: none; color: red">Por favor ingrese un Gmail sin incluir el "@gmail.com"</p>
                                     <div class="row">
                                         <div class="col-sm-8 mx-auto">
                                             <hr style=" margin: 0.5rem;">
@@ -327,7 +327,7 @@
 
                                     <input type="text" class="form-control form-control-lg" name="usuariocuatro"  id="usuario4"placeholder="Nombre Usuario Miembro 4"/>
                                     <div class="invalid-feedback">
-                                        Porfavor ingrese el usuario
+                                        Por favor ingrese el usuario
                                     </div>
                                 </div>
 
@@ -339,12 +339,12 @@
                                         <input type="text" id="mail4" class="form-control form-control-lg" name="mailcuatro" placeholder="Gmail Miembro 4" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
                                         <span class="input-group-text" id="basic-addon2">@gmail.com</span>
                                         <div class="invalid-feedback">
-                                            Porfavor ingrese el Gmail
+                                            Por favor ingrese el Gmail
                                         </div>
                                     </div>
 
                                     <br>
-                                    <p id="aparecerErrorGmail4" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                    <p id="aparecerErrorGmail4" style="display: none; color: red">Por favor ingrese un Gmail sin incluir el "@gmail.com"</p>
                                     <div class="row">
                                         <div class="col-sm-8 mx-auto">
                                             <hr style=" margin: 0.5rem;">
@@ -360,7 +360,7 @@
 
                                     <input type="text" class="form-control form-control-lg" name="usuariocinco" id="usuario5" placeholder="Nombre Usuario Miembro 5"/>
                                     <div class="invalid-feedback">
-                                        Porfavor ingrese el usuario
+                                        Por favor ingrese el usuario
                                     </div>
                                 </div>
 
@@ -372,11 +372,11 @@
                                         <input type="text" id="mail5" class="form-control form-control-lg" name="mailcinco" placeholder="Gmail Miembro 5" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
                                         <span class="input-group-text" id="basic-addon2">@gmail.com</span>
                                         <div class="invalid-feedback">
-                                            Porfavor ingrese el Gmail
+                                            Por favor ingrese el Gmail
                                         </div>
                                     </div>
                                     <br>
-                                    <p id="aparecerErrorGmail5" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                    <p id="aparecerErrorGmail5" style="display: none; color: red">Por favor ingrese un Gmail sin incluir el "@gmail.com"</p>
                                     <div class="row">
                                         <div class="col-sm-8 mx-auto">
                                             <hr style=" margin: 0.5rem;">
@@ -392,7 +392,7 @@
 
                                     <input type="text" name="usuarioseis" id="usuario6" placeholder="Nombre Usuario Miembro 6" class="form-control form-control-lg" />
                                     <div class="invalid-feedback">
-                                        Porfavor ingrese el usuario
+                                        Por favor ingrese el usuario
                                     </div>
                                 </div>
 
@@ -404,11 +404,11 @@
                                         <input type="text" id="mail6" class="form-control form-control-lg" name="mailseis" placeholder="Gmail Miembro 6" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
                                         <span class="input-group-text" id="basic-addon2">@gmail.com</span>
                                         <div class="invalid-feedback">
-                                            Porfavor ingrese el Gmail
+                                            Por favor ingrese el Gmail
                                         </div>
                                     </div>
                                     <br>
-                                    <p id="aparecerErrorGmail6" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                    <p id="aparecerErrorGmail6" style="display: none; color: red">Por favor ingrese un Gmail sin incluir el "@gmail.com"</p>
                                     <div class="row">
                                         <div class="col-sm-8 mx-auto">
                                             <hr style=" margin: 0.5rem;">
@@ -424,7 +424,7 @@
 
                                     <input type="text" name="usuariosiete" id="usuario7" placeholder="Nombre Usuario Miembro 7" class="form-control form-control-lg" />
                                     <div class="invalid-feedback">
-                                        Porfavor ingrese el usuario
+                                        Por favor ingrese el usuario
                                     </div>
                                 </div>
 
@@ -437,11 +437,11 @@
                                         <input type="text" id="mail7" class="form-control form-control-lg" name="mailsiete" placeholder="Gmail Miembro 7" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
                                         <span class="input-group-text" id="basic-addon2">@gmail.com</span>
                                         <div class="invalid-feedback">
-                                            Porfavor ingrese el Gmail
+                                            Por favor ingrese el Gmail
                                         </div>
                                     </div>
                                     <br>
-                                    <p id="aparecerErrorGmail7" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                    <p id="aparecerErrorGmail7" style="display: none; color: red">Por favor ingrese un Gmail sin incluir el "@gmail.com"</p>
                                     <div class="row">
                                         <div class="col-sm-8 mx-auto">
                                             <hr style=" margin: 0.5rem;">
@@ -457,7 +457,7 @@
 
                                     <input type="text" name="usuarioocho" id="usuario8" placeholder="Nombre Usuario Miembro 8"class="form-control form-control-lg" />
                                     <div class="invalid-feedback">
-                                        Porfavor ingrese el usuario
+                                        Por favor ingrese el usuario
                                     </div>
                                 </div>
 
@@ -470,11 +470,11 @@
                                         <input type="text" id="mail8" class="form-control form-control-lg" name="mailocho" placeholder="Gmail Miembro 8" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
                                         <span class="input-group-text" id="basic-addon2">@gmail.com</span>
                                         <div class="invalid-feedback">
-                                            Porfavor ingrese el Gmail
+                                            Por favor ingrese el Gmail
                                         </div>
                                     </div>
                                     <br>
-                                    <p id="aparecerErrorGmail8" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                    <p id="aparecerErrorGmail8" style="display: none; color: red">Por favor ingrese un Gmail sin incluir el "@gmail.com"</p>
                                     <div class="row">
                                         <div class="col-sm-8 mx-auto">
                                             <hr style=" margin: 0.5rem;">
@@ -490,7 +490,7 @@
                                 <div class="form-outline mb-4 " >
                                     <input type="text" name="usuarionueve" id="usuario9" placeholder="Nombre Usuario Miembro 9" class="form-control form-control-lg" />
                                     <div class="invalid-feedback">
-                                        Porfavor ingrese el usuario
+                                        Por favor ingrese el usuario
                                     </div>
                                 </div>
 
@@ -501,11 +501,11 @@
                                         <input type="text" id="mail9" class="form-control form-control-lg" name="mailnueve" placeholder="Gmail Miembro 9" aria-label="Recipient's username" aria-describedby="basic-addon2" required>
                                         <span class="input-group-text" id="basic-addon2">@gmail.com</span>
                                         <div class="invalid-feedback">
-                                            Porfavor ingrese el Gmail
+                                            Por favor ingrese el Gmail
                                         </div>
                                     </div>
                                     <br>
-                                    <p id="aparecerErrorGmail9" style="display: none; color: red">Porfavor ingrese un Gmail sin incluir el "@gmail.com"</p>
+                                    <p id="aparecerErrorGmail9" style="display: none; color: red">Por favor ingrese un Gmail sin incluir el "@gmail.com"</p>
                                     <div class="row">
                                         <div class="col-sm-8 mx-auto">
                                             <hr style=" margin: 0.5rem;">
@@ -523,7 +523,7 @@
                                     Aceptar bases y condiciones.
                                 </label>
                                 <div class="invalid-feedback">
-                                    Porfavor Aceptar bases y condiciones antes de continuar
+                                    Por favor Aceptar bases y condiciones antes de continuar
                                 </div>
 
                         </div>
@@ -531,6 +531,7 @@
                                 <a th:href="@{/condiciones}" target="_blank" style="font-size: 11px;color: #8c8c8c; line-height: 1.5; text-align: justify; font-family: Arial, sans-serif;">Leer bases y condiciones</a>
                          </div>
                         <button class="w-100 mb-2 btn btn-lg rounded-3 btn-success" type="submit" style="margin-top: 20px;">Registrarse</button>
+
                     </form>
         </div>
 </div>
@@ -631,6 +632,7 @@ function validarContrasena(){
 
     if(inputContrasena1.value != inputContrasena2.value && inputContrasena2.value != ""){
        parrafoError.style.display = "inline-block";
+       parrafoError.scrollIntoView({ behavior: 'smooth', block: 'center' });
        return true
 
 
@@ -746,6 +748,42 @@ function accederMiembros(){
    document.getElementById("em-one").value = valorInputEm
 
  }
+ function centrarPantalla(){
+     var usuario = document.getElementById("usuario")
+     var contrasena = document.getElementById("contrasena")
+     var contrasena2 = document.getElementById("contrasena2")
+     var pais = document.getElementById("pais")
+
+     if(usuario.required && usuario.value == ""){
+            usuario.scrollIntoView({ behavior: 'smooth', block: 'center' });
+     }
+     if(contrasena.required && contrasena.value == ""){
+            contrasena.scrollIntoView({ behavior: 'smooth', block: 'center' });
+     }
+     if(contrasena2.required && contrasena2.value == ""){
+            contrasena2.scrollIntoView({ behavior: 'smooth', block: 'center' });
+     }
+     if(pais.required && pais.value == ""){
+            pais.scrollIntoView({ behavior: 'smooth', block: 'center' });
+     }
+     for (let j = 1; j < 4 ; j++) {
+             if(document.getElementById("pais"+j).value == "" && document.getElementById("divPais"+j).style.display == "block"){
+                document.getElementById("pais"+j).scrollIntoView({ behavior: 'smooth', block: 'center' });
+             }
+     }
+     for (let j = 2; j < 10 ; j++) {
+             if(document.getElementById("mail"+j).value == "" && document.getElementById(j).style.display == "inline-block"){
+
+                document.getElementById("mail"+j).scrollIntoView({ behavior: 'smooth', block: 'center' });
+             }
+             if(document.getElementById("usuario"+j).value == "" && document.getElementById(j).style.display == "inline-block"){
+
+                document.getElementById("usuario"+j).scrollIntoView({ behavior: 'smooth', block: 'center' });
+             }
+     }
+
+ }
+
 (() => {
   'use strict'
   inicio();
@@ -756,8 +794,8 @@ function accederMiembros(){
   // Loop over them and prevent submission
   Array.from(forms).forEach(form => {
     form.addEventListener('submit', event => {
+      centrarPantalla()
       if (!form.checkValidity()) {
-
         event.preventDefault()
         event.stopPropagation()
 
