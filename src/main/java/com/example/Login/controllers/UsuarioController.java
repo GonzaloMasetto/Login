@@ -143,13 +143,13 @@ public class UsuarioController{
                 Usuario usermail = usuarioRepository.findByMail(maildos+"@gmail.com");
 
                 if (user != null && usermail != null){
-                    modelo.addAttribute("errorUsuarioGmail2","El usuario: " +usuariodos + " y el Gmail: "+ maildos + "@gmail.com Ya están registrados en el sistema, Porfavor ingrese otros");
+                    modelo.addAttribute("errorUsuarioGmail2","El usuario: " +usuariodos + " y el Gmail: "+ maildos + "@gmail.com Ya están registrados en el sistema, Por favor ingrese otros");
                     }
                 else if (usermail!= null){
-                    modelo.addAttribute("errorGmail2", "El gmail: "+maildos +"@gmail.com Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorGmail2", "El gmail: "+maildos +"@gmail.com Ya está registrado en el sistema, Por favor ingrese otro");
                     }
                 else if (user != null){
-                    modelo.addAttribute("errorUsuario2", "El usuario: "+usuariodos +" Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorUsuario2", "El usuario: "+usuariodos +" Ya está registrado en el sistema, Por favor ingrese otro");
 
                 } else {
                     this.cantidadMiembros += 1;
@@ -162,13 +162,13 @@ public class UsuarioController{
                 Usuario usermail = usuarioRepository.findByMail(mailtres+"@gmail.com");
 
                 if (user != null && usermail != null){
-                    modelo.addAttribute("errorUsuarioGmail3","El usuario: " +usuariotres + " y el Gmail: "+ mailtres + "@gmail.com Ya están registrados en el sistema, Porfavor ingrese otros");
+                    modelo.addAttribute("errorUsuarioGmail3","El usuario: " +usuariotres + " y el Gmail: "+ mailtres + "@gmail.com Ya están registrados en el sistema, Por favor ingrese otros");
                 }
                 else if (usermail!= null){
-                    modelo.addAttribute("errorGmail3", "El gmail: "+mailtres +"@gmail.com Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorGmail3", "El gmail: "+mailtres +"@gmail.com Ya está registrado en el sistema, Por favor ingrese otro");
                 }
                 else if (user != null){
-                    modelo.addAttribute("errorUsuario3", "El usuario: "+usuariotres +" Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorUsuario3", "El usuario: "+usuariotres +" Ya está registrado en el sistema, Por favor ingrese otro");
 
                 } else {
                     this.cantidadMiembros += 1;
@@ -180,13 +180,13 @@ public class UsuarioController{
                 Usuario usermail = usuarioRepository.findByMail(mailcuatro+"@gmail.com");
 
                 if (user != null && usermail != null){
-                    modelo.addAttribute("errorUsuarioGmail4","El usuario: " +usuariocuatro + " y el Gmail: "+ mailcuatro + "@gmail.com Ya están registrados en el sistema, Porfavor ingrese otros");
+                    modelo.addAttribute("errorUsuarioGmail4","El usuario: " +usuariocuatro + " y el Gmail: "+ mailcuatro + "@gmail.com Ya están registrados en el sistema, Por favor ingrese otros");
                 }
                 else if (usermail!= null){
-                    modelo.addAttribute("errorGmail4", "El gmail: "+mailcuatro +"@gmail.com Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorGmail4", "El gmail: "+mailcuatro +"@gmail.com Ya está registrado en el sistema, Por favor ingrese otro");
                 }
                 else if (user != null){
-                    modelo.addAttribute("errorUsuario4", "El usuario: "+usuariocuatro +" Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorUsuario4", "El usuario: "+usuariocuatro +" Ya está registrado en el sistema, Por favor ingrese otro");
 
                 } else {
                     this.cantidadMiembros += 1;
@@ -198,13 +198,13 @@ public class UsuarioController{
                 Usuario usermail = usuarioRepository.findByMail(mailcinco+"@gmail.com");
 
                 if (user != null && usermail != null){
-                    modelo.addAttribute("errorUsuarioGmail5","El usuario: " +usuariocinco + " y el Gmail: "+ mailcinco + "@gmail.com Ya están registrados en el sistema, Porfavor ingrese otros");
+                    modelo.addAttribute("errorUsuarioGmail5","El usuario: " +usuariocinco + " y el Gmail: "+ mailcinco + "@gmail.com Ya están registrados en el sistema, Por favor ingrese otros");
                 }
                 else if (usermail!= null){
-                    modelo.addAttribute("errorGmail5", "El gmail: "+mailcinco +"@gmail.com Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorGmail5", "El gmail: "+mailcinco +"@gmail.com Ya está registrado en el sistema, Por favor ingrese otro");
                 }
                 else if (user != null){
-                    modelo.addAttribute("errorUsuario5", "El usuario: "+usuariocinco +" Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorUsuario5", "El usuario: "+usuariocinco +" Ya está registrado en el sistema, Por favor ingrese otro");
 
                 } else {
                     this.cantidadMiembros += 1;
@@ -216,13 +216,13 @@ public class UsuarioController{
                 Usuario usermail = usuarioRepository.findByMail(mailseis+"@gmail.com");
 
                 if (user != null && usermail != null){
-                    modelo.addAttribute("errorUsuarioGmail6","El usuario: " +usuarioseis + " y el Gmail: "+ mailseis + "@gmail.com Ya están registrados en el sistema, Porfavor ingrese otros");
+                    modelo.addAttribute("errorUsuarioGmail6","El usuario: " +usuarioseis + " y el Gmail: "+ mailseis + "@gmail.com Ya están registrados en el sistema, Por favor ingrese otros");
                 }
                 else if (usermail!= null){
-                    modelo.addAttribute("errorGmail6", "El gmail: "+mailseis +"@gmail.com Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorGmail6", "El gmail: "+mailseis +"@gmail.com Ya está registrado en el sistema, Por favor ingrese otro");
                 }
                 else if (user != null){
-                    modelo.addAttribute("errorUsuario6", "El usuario: "+usuarioseis +" Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorUsuario6", "El usuario: "+usuarioseis +" Ya está registrado en el sistema, Por favor ingrese otro");
 
                 } else {
                     this.cantidadMiembros += 1;
@@ -234,13 +234,13 @@ public class UsuarioController{
                 Usuario usermail = usuarioRepository.findByMail(mailsiete+"@gmail.com");
 
                 if (user != null && usermail != null){
-                    modelo.addAttribute("errorUsuarioGmail7","El usuario: " +usuariosiete + " y el Gmail: "+ mailsiete + "@gmail.com Ya están registrados en el sistema, Porfavor ingrese otros");
+                    modelo.addAttribute("errorUsuarioGmail7","El usuario: " +usuariosiete + " y el Gmail: "+ mailsiete + "@gmail.com Ya están registrados en el sistema, Por favor ingrese otros");
                 }
                 else if (usermail!= null){
-                    modelo.addAttribute("errorGmail7", "El gmail: "+mailsiete +"@gmail.com Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorGmail7", "El gmail: "+mailsiete +"@gmail.com Ya está registrado en el sistema, Por favor ingrese otro");
                 }
                 else if (user != null){
-                    modelo.addAttribute("errorUsuario7", "El usuario: "+usuariosiete +" Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorUsuario7", "El usuario: "+usuariosiete +" Ya está registrado en el sistema, Por favor ingrese otro");
 
                 } else {
                     this.cantidadMiembros += 1;
@@ -252,13 +252,13 @@ public class UsuarioController{
                 Usuario usermail = usuarioRepository.findByMail(mailocho+"@gmail.com");
 
                 if (user != null && usermail != null){
-                    modelo.addAttribute("errorUsuarioGmail8","El usuario: " +usuarioocho + " y el Gmail: "+ mailocho + "@gmail.com Ya están registrados en el sistema, Porfavor ingrese otros");
+                    modelo.addAttribute("errorUsuarioGmail8","El usuario: " +usuarioocho + " y el Gmail: "+ mailocho + "@gmail.com Ya están registrados en el sistema, Por favor ingrese otros");
                 }
                 else if (usermail!= null){
-                    modelo.addAttribute("errorGmail8", "El gmail: "+mailocho +"@gmail.com Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorGmail8", "El gmail: "+mailocho +"@gmail.com Ya está registrado en el sistema, Por favor ingrese otro");
                 }
                 else if (user != null){
-                    modelo.addAttribute("errorUsuario8", "El usuario: "+usuarioocho +" Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorUsuario8", "El usuario: "+usuarioocho +" Ya está registrado en el sistema, Por favor ingrese otro");
 
                 } else {
                     this.cantidadMiembros += 1;
@@ -270,13 +270,13 @@ public class UsuarioController{
                 Usuario usermail = usuarioRepository.findByMail(mailnueve+"@gmail.com");
 
                 if (user != null && usermail != null){
-                    modelo.addAttribute("errorUsuarioGmail9","El usuario: " +usuarionueve + " y el Gmail: "+ mailnueve + "@gmail.com Ya están registrados en el sistema, Porfavor ingrese otros");
+                    modelo.addAttribute("errorUsuarioGmail9","El usuario: " +usuarionueve + " y el Gmail: "+ mailnueve + "@gmail.com Ya están registrados en el sistema, Por favor ingrese otros");
                 }
                 else if (usermail!= null){
-                    modelo.addAttribute("errorGmail9", "El gmail: "+mailnueve +"@gmail.com Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorGmail9", "El gmail: "+mailnueve +"@gmail.com Ya está registrado en el sistema, Por favor ingrese otro");
                 }
                 else if (user != null){
-                    modelo.addAttribute("errorUsuario9", "El usuario: "+usuarionueve +" Ya está registrado en el sistema, Porfavor ingrese otro");
+                    modelo.addAttribute("errorUsuario9", "El usuario: "+usuarionueve +" Ya está registrado en el sistema, Por favor ingrese otro");
 
                 } else {
                     this.cantidadMiembros += 1;
@@ -286,13 +286,13 @@ public class UsuarioController{
             Usuario usermail = usuarioRepository.findByMail(mail+"@gmail.com");
 
             if (user != null && usermail != null){
-                    modelo.addAttribute("errorUsuarioGmail1","El usuario: " +usuario + " y el Gmail: "+ mail + "@gmail.com ya están registrados en el sistema, Porfavor ingrese otros");
+                    modelo.addAttribute("errorUsuarioGmail1","El usuario: " +usuario + " y el Gmail: "+ mail + "@gmail.com ya están registrados en el sistema, Por favor ingrese otros");
            }
                 else if (usermail != null){
-                        modelo.addAttribute("errorGmail1", "El gmail: "+mail +"@gmail.com ya está registrado en el sistema, Porfavor ingrese otro");
+                        modelo.addAttribute("errorGmail1", "El gmail: "+mail +"@gmail.com ya está registrado en el sistema, Por favor ingrese otro");
                 }
                 else if (user != null){
-                        modelo.addAttribute("errorUsuario1", "El usuario: "+usuario +" ya está registrado en el sistema, Porfavor ingrese otro");
+                        modelo.addAttribute("errorUsuario1", "El usuario: "+usuario +" ya está registrado en el sistema, Por favor ingrese otro");
                 }
             else {
                 this.cantidadMiembros += 1;
