@@ -17,6 +17,8 @@
 <body>
 <div style="display: none;" id="usuariosGuardados">
     <p id="miembros" th:value="${miembros}" th:text="${miembros}"></p>
+    <p id="paisSeleccionado" th:value="${pais}" th:text="${pais}"></p>
+    <p id="provinciaSeleccionada" th:value="${provincia}" th:text="${provincia}"></p>
 </div>
 
 <div class="success-modal modal-lg cartelExito" th:if="${Exito}">
@@ -109,7 +111,7 @@
 
                         <div class="form-outline mb-4 col-sm-10 mx-auto">
                             <label for="validationTooltip04" class="form-label text-success" style="font-weight:600">Pais</label>
-                            <select class="form-select  form-control-lg" name="pais" id="pais" onchange="accederProvincias()" required>
+                            <select class="form-select  form-control-lg" name="pais" id="pais" onchange="accederProvincias()" required th:value="${pais}">
                                 <option selected disabled value="">Elegir pais</option>
                                 <option value="Argentina">Argentina</option>
                                 <option value="Bolivia">Bolivia</option>
@@ -141,29 +143,29 @@
                             <label for="validationTooltip04" class="form-label text-success" style="font-weight:600">Provincia/Zona</label>
                             <select class="form-select  form-control-lg" name="provinciaAR" id="pais1" required>
                                 <option selected disabled value="">Elegir Provincia/Zona</option>
-                                <option value="BuenosAires">  Buenos Aires</option>
-                                <option value="Catamarca"> Catamarca</option>
-                                <option value="Chaco"> Chaco</option>
-                                <option value="Chubut"> Chubut</option>
-                                <option value="Córdoba"> Córdoba</option>
-                                <option value="Corrientes"> Corrientes</option>
-                                <option value="EntreRios"> Entre Rios</option>
-                                <option value="Formosas"> Formosas</option>
-                                <option value="Jujuy"> Jujuy</option>
-                                <option value="LaPampa"> La Pampa</option>
-                                <option value="LaRioja"> La Rioja</option>
-                                <option value="Mendoza"> Mendoza</option>
-                                <option value="Misiones"> Misiones</option>
-                                <option value="Neuquén"> Neuquén</option>
-                                <option value="RíoNegro"> Río Negro</option>
-                                <option value="Salta"> Salta</option>
-                                <option value="SanJuan"> San Juan</option>
-                                <option value="SanLuis"> San Luis</option>
-                                <option value="SantaCruz"> Santa Cruz</option>
-                                <option value="SantaFe"> Santa Fe</option>
-                                <option value="SantiagoDelEstero"> Santiago Del Estero</option>
-                                <option value="TierradelFuego"> Tierra del Fuego</option>
-                                <option value="Tucumán"> Tucumán</option>
+                                <option value="Buenos Aires">Buenos Aires</option>
+                                <option value="Catamarca">Catamarca</option>
+                                <option value="Chaco">Chaco</option>
+                                <option value="Chubut">Chubut</option>
+                                <option value="Córdoba">Córdoba</option>
+                                <option value="Corrientes">Corrientes</option>
+                                <option value="Entre Rios">Entre Rios</option>
+                                <option value="Formosa">Formosa</option>
+                                <option value="Jujuy">Jujuy</option>
+                                <option value="La Pampa">La Pampa</option>
+                                <option value="La Rioja">La Rioja</option>
+                                <option value="Mendoza">Mendoza</option>
+                                <option value="Misiones">Misiones</option>
+                                <option value="Neuquén">Neuquén</option>
+                                <option value="Río Negro">Río Negro</option>
+                                <option value="Salta">Salta</option>
+                                <option value="San Juan">San Juan</option>
+                                <option value="San Luis">San Luis</option>
+                                <option value="Santa Cruz">Santa Cruz</option>
+                                <option value="Santa Fe">Santa Fe</option>
+                                <option value="Santiago Del Estero">Santiago Del Estero</option>
+                                <option value="Tierra del Fuego">Tierra del Fuego</option>
+                                <option value="Tucumán">Tucumán</option>
                             </select>
                             <div class="invalid-feedback">
                                 Por favor ingrese la Provincia/Zona
@@ -173,21 +175,21 @@
                             <label for="validationTooltip04" class="form-label text-success " style="font-weight:600">Provincia/Zona</label>
                             <select class="form-select form-control-lg" name="provinciaCH" id="pais2" required>
                                 <option selected disabled value="">Elegir Provincia/Zona</option>
-                                <option value="Arica">  Arica</option>
-                                <option value="Iquique"> Iquique</option>
-                                <option value="Antofagasta"> Antofagasta</option>
-                                <option value="Copiapó"> Copiapó</option>
-                                <option value="LaSerena"> La Serena</option>
-                                <option value="Valparaiso"> Valparaíso</option>
-                                <option value="Santiago"> Santiago</option>
-                                <option value="Rancagua"> Rancagua</option>
-                                <option value="Talca"> Talca</option>
-                                <option value="Concepción"> Concepción</option>
-                                <option value="Temuco"> Temuco</option>
-                                <option value="Valdivia"> Valdivia</option>
-                                <option value="PuertoMontt"> Puerto Montt</option>
-                                <option value="Coyhaique"> Coyhaique</option>
-                                <option value="PuntaArenas"> Punta Arenas</option>
+                                <option value="Arica">Arica</option>
+                                <option value="Iquique">Iquique</option>
+                                <option value="Antofagasta">Antofagasta</option>
+                                <option value="Copiapó">Copiapó</option>
+                                <option value="La Serena">La Serena</option>
+                                <option value="Valparaiso">Valparaiso</option>
+                                <option value="Santiago">Santiago</option>
+                                <option value="Rancagua">Rancagua</option>
+                                <option value="Talca">Talca</option>
+                                <option value="Concepción">Concepción</option>
+                                <option value="Temuco">Temuco</option>
+                                <option value="Valdivia">Valdivia</option>
+                                <option value="Puerto Montt">Puerto Montt</option>
+                                <option value="Coyhaique">Coyhaique</option>
+                                <option value="Punta Arenas">Punta Arenas</option>
                             </select>
                             <div class="invalid-feedback">
                                 Por favor ingrese la Provincia/Zona
@@ -533,6 +535,7 @@
                         <button class="w-100 mb-2 btn btn-lg rounded-3 btn-success" type="submit" style="margin-top: 20px;">Registrarse</button>
 
                     </form>
+
         </div>
 </div>
 <script th:inline="javascript">
@@ -544,6 +547,7 @@ input.addEventListener('blur', validarContrasena);
 function inicio() {
      var miembros = document.getElementById("miembros").innerHTML;
      document.getElementById("validationTooltip04").value = miembros;
+     seleccionarPaisProvincia();
      iniciarValidacion();
  switch (miembros) {
 
@@ -552,7 +556,6 @@ function inicio() {
       case "one":
         document.getElementById("validationTooltip04").options.selectedIndex = 1;
         borrarInputs(2);
-        break;
         break;
       case "two":
         document.getElementById("validationTooltip04").options.selectedIndex = 2;
@@ -788,6 +791,47 @@ function accederMiembros(){
 
  }
 
+function seleccionarPaisProvincia(){
+    var selectPais = document.getElementById("pais");
+    var options = selectPais.options;
+    var selectArgentina = document.getElementById("pais1");
+    var optionsArgentina = selectArgentina.options;
+    var selectChile = document.getElementById("pais2");
+    var optionsChile = selectChile.options;
+    for (var i = 0; i < options.length; i++) {
+      if (options[i].innerHTML === document.getElementById("paisSeleccionado").innerHTML) {
+        selectPais.selectedIndex = i;
+        break;
+      }
+    }
+    iniciarValidacionProvincias();
+    if (selectPais.value == "Argentina") {
+            document.getElementById("divPais1").style.display = "block";
+            document.getElementById("pais1").required = 'true';
+
+            for (var i = 0; i < optionsArgentina.length; i++) {
+                  if (optionsArgentina[i].innerHTML === document.getElementById("provinciaSeleccionada").innerHTML) {
+                    selectArgentina.selectedIndex = i;
+                    break;
+                  }
+            }
+    }else if (selectPais.value == "Chile") {
+            document.getElementById("divPais2").style.display = "block";
+            document.getElementById("pais2").required = 'true';
+
+             for (var i = 0; i < optionsChile.length; i++) {
+                  if (optionsChile[i].innerHTML === document.getElementById("provinciaSeleccionada").innerHTML) {
+                    selectChile.selectedIndex = i;
+                    break;
+                  }
+             }
+    }else{
+            document.getElementById("divPais3").style.display = "block";
+            document.getElementById("pais3").required = 'true';
+
+            document.getElementById("pais3").value = document.getElementById("provinciaSeleccionada").innerHTML;
+    }
+}
 (() => {
   'use strict'
   inicio();

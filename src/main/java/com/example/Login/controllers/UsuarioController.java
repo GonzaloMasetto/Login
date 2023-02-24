@@ -89,12 +89,15 @@ public class UsuarioController{
 
             if (pais.equals("Argentina")){
                 this.provincia = provinciaAR;
+
             } else if (pais.equals("Chile")) {
                 this.provincia = provinciaCH;
             }else {
                 this.provincia = provinciaOTRO;
             }
             modelo.addAttribute("miembros",miembros);
+            modelo.addAttribute("pais",pais);
+            modelo.addAttribute("provincia",provincia);
             modelo.addAttribute("usuarioGuardado1",usuario);
             modelo.addAttribute("gmailGuardado1",mail);
             modelo.addAttribute("usuarioGuardado2",usuariodos);
@@ -283,7 +286,7 @@ public class UsuarioController{
             Usuario usermail = usuarioRepository.findByMail(mail+"@gmail.com");
 
             if (user != null && usermail != null){
-                    modelo.addAttribute("errorUsuarioGmail1","El usuario: " +usuario + "y el Gmail: "+ mail + "@gmail.com ya están registrados en el sistema, Porfavor ingrese otros");
+                    modelo.addAttribute("errorUsuarioGmail1","El usuario: " +usuario + " y el Gmail: "+ mail + "@gmail.com ya están registrados en el sistema, Porfavor ingrese otros");
            }
                 else if (usermail != null){
                         modelo.addAttribute("errorGmail1", "El gmail: "+mail +"@gmail.com ya está registrado en el sistema, Porfavor ingrese otro");
@@ -322,13 +325,13 @@ public class UsuarioController{
                 if (exitoRegistro >= 9){
                     svcUsuario.registrar(usuarionueve, mailnueve, contrasena, false, grupo, pais, provincia);
                 }
-               if (usuariodos.equals("")){
+              /* if (usuariodos.equals("")){
                    svcUsuario.mensajeCliente(usuario,false,mail+"@gmail.com");
 
                }else{
                    svcUsuario.mensajeCliente(usuario,true,mail+"@gmail.com");
                }
-               svcUsuario.mensajeLiberium(grupo,pageable);
+               svcUsuario.mensajeLiberium(grupo,pageable);*/
            }
 
 

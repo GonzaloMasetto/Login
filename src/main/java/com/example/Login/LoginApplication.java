@@ -6,12 +6,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class LoginApplication extends SpringBootServletInitializer {
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder){
+public class LoginApplication {
 
-		return builder.sources(LoginApplication.class);
-}
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(LoginApplication.class, args);
