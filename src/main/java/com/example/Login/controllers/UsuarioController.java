@@ -325,13 +325,13 @@ public class UsuarioController{
                 if (exitoRegistro >= 9){
                     svcUsuario.registrar(usuarionueve, mailnueve, contrasena, false, grupo, pais, provincia);
                 }
-              /* if (usuariodos.equals("")){
+              if (usuariodos.equals("")){
                    svcUsuario.mensajeCliente(usuario,false,mail+"@gmail.com");
 
                }else{
                    svcUsuario.mensajeCliente(usuario,true,mail+"@gmail.com");
                }
-               svcUsuario.mensajeLiberium(grupo,pageable);*/
+               svcUsuario.mensajeLiberium(grupo,pageable);
            }
 
 
